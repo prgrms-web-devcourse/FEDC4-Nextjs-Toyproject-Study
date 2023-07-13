@@ -1,13 +1,15 @@
 # FEDC4-Nextjs-Toyproject-Study
 
 <h3>📆 기간 </h3>
+<br>
+2023.6.13 ~ 2023.7.31
 
-2023. 6. 13. ~ 2023. 7. 31.
 
 <br>
 <br>
 
 <h3>🏃 진행 방식</h3>
+<br>
 
 매주 금요일 15시
 
@@ -18,6 +20,7 @@
 
 
 <h3>🥅 목표</h3>
+<br>
 
 MVP (Minimum Vaible Product)
 
@@ -26,9 +29,12 @@ MVP (Minimum Vaible Product)
 
 
 <h3>💻 구현 담당</h3>
+<br>
 
 메인페이지 : 김주하, 남궁호수
+<br>
 
 포스트 작성 : 이현정, 이승희
+<br>
 
 모달 (댓글) : 김희석, 이범진
