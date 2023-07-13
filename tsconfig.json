@@ -5,7 +5,6 @@
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "types": ["react", "react-dom", "react-router-dom"],
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -15,7 +14,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "./src"
   },
   "include": ["src"]
 }
