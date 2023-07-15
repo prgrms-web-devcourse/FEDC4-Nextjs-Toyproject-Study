@@ -18,6 +18,8 @@
   "rules": {
     "import/prefer-default-export": "off",
     "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
     "prettier/prettier": ["error", { "singleQuote": true }]
   }
 }
