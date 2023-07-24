@@ -15,7 +15,7 @@ const Layout = () => {
   return (
     <>
       <div
-        className='flex flex-col items-center justify-center mx-auto max-w-475 w-full h-screen'
+        className='flex flex-col items-center mx-auto max-w-475 w-full h-screen'
         style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
       >
         <Outlet />
