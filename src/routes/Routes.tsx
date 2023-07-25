@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes as ReactRouters } from 'react-router-dom';
 import Layout from '../components/common/Layout';
 import MainPage from '../pages/mainpage/MainPage';
-import PostPage from '../pages/PostPage';
+import PostPage from '../pages/postpage/PostPage';
 
 const Routes = () => {
   return (
