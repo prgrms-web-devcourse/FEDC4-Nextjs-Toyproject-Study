@@ -1,5 +1,19 @@
 import arrowDown from 'assets/post/arrow-down.svg';
+import arrowUp from 'assets/post/arrow-up.svg';
+import { useState } from 'react';
 const PostGuidButton = () => {
+  const [imgPath, setImgPath] = useState(arrowDown);
+  const [guidFlag, setGuidFlag] = useState(false);
+  const guidButtonClick = () => {
+    console.log('call~~');
+    if (!guidFlag) {
+      setImgPath(arrowUp);
+    } else {
+      setImgPath(arrowDown);
+    }
+    setGuidFlag(!guidFlag);
+  };
+
   return (
     <div
       id='postContainer'
@@ -8,12 +22,16 @@ const PostGuidButton = () => {
       <button
         id={`postGuidButton`}
         className={`flex flex-row justify-between items-center border border-solid border-[#2D4053] bg-[#E9ECF3] w-1/2 h-12 cursor-pointer px-2`}
+        onClick={guidButtonClick}
       >
         <span className={``}>반성문 가이드</span>
-        <img src={arrowDown} alt='' />
+        <img src={imgPath} alt='' />
       </button>
       <div
-        className={`flex flex-col justify-center w-1/2 pl-2 border border-solid border-[#2D4053]`}
+        id='postGuidText'
+        className={`flex flex-col justify-center w-1/2 pl-2 border border-solid border-[#2D4053] pb-2 ${
+          guidFlag ? '' : 'hidden'
+        }`}
       >
         <span className={`text-2xl font-semibold pb-5 text-left pt-5`}>
           반성문을 올바르게 적는 방법
