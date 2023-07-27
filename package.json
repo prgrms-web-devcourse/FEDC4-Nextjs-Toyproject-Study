@@ -1,5 +1,7 @@
 {
+
   "name": "gohaeseongsa",
+
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,11 +11,13 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.38",
     "@types/react": "^18.2.14",
+
     "@types/react-dom": "^18.2.7",
     "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
+
     "react-router-dom": "^6.14.1",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
@@ -23,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+
     "eject": "react-scripts eject"
+
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +50,7 @@
     ]
   },
   "devDependencies": {
+
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",

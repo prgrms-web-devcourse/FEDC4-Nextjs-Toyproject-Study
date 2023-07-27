@@ -1,3 +1,4 @@
+
 import { POST } from 'api';
 import { useGetPosts } from 'api/queries';
 import { Post } from 'interface';
@@ -69,6 +70,7 @@ const PostPage = () => {
       ))}
     </div>
   );
+
 };
 
 export default PostPage;
