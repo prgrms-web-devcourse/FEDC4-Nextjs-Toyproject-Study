@@ -6,14 +6,31 @@ import {useState} from 'react'
 const Header = () => {
   const isLogin = true;
 
-  const [modalOpened, setModalOpened] = useState(true);
+  const [modalOpened, setModalOpened] = useState(false);
+  
+
+  window.addEventListener("load", function () {
+    if(!modalOpened) {
+      const modal = document.querySelector('#modal') as HTMLElement
+      modal.style.visibility = 'hidden'
+    }
+  });
+  
 
   const modalHandler = () => {
     setModalOpened((prev)=> !prev);
     console.log(modalOpened, 'clicked');
-  }
- 
 
+    const modal = document.querySelector('#modal') as HTMLElement
+    if(modalOpened){
+      modal.style.visibility = 'visible'
+    }else {
+      modal.style.visibility = 'hidden'
+    }
+  }
+
+  
+  
   return (
     <>
       <header
@@ -28,7 +45,7 @@ const Header = () => {
               <Button text={'반성문 쓰기'} />
               <div className='w-12 h-12 shrink-0 ml-6'>
                 <div className={`h-full relative items-center justify-center user-icon `} onClick={modalHandler} >
-                  <div className={`  border border-current w-36 h-32 bg-white flex flex-col justify-around items-center gap-x-5 shadow-md absolute top-12 left-8 ${modalOpened? 'modalOpened': ''}`} >
+                  <div id='modal' className={`border border-current w-36 h-32 bg-white flex flex-col justify-around items-center gap-x-5 shadow-md absolute top-12 left-8`} >
                     <span className='block text-lg select-none'>어쩌구 님</span>
                     <button className='w-24 bg-slate-300 border border-current block text-lg hover:shadow-[2px_2px_0px_0px_rgba(32,43,61,1)]'>로그아웃</button>
                   </div>
