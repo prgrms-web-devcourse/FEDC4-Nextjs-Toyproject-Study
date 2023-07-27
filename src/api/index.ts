@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useQuery } from 'react-query';
+// import { useQuery } from 'react-query';
 
 const instance = axios.create({
   baseURL: '', // 추후 서버 주소 추가
