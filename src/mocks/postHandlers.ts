@@ -15,13 +15,14 @@ export const postHandlers = [
       return res(ctx.status(404));
     }
   }),
-  rest.put('/posts/:postId/comments', (req, res, ctx) => {
-    // TODO
-  }),
-  rest.put('/posts/:postId/likes', (req, res, ctx) => {
-    // TODO
-  }),
-  rest.put('/posts/:postId/forgiven', (req, res, ctx) => {
-    // TODO
-  }),
+  // rest.put('/posts/:postId/comments', (req, res, ctx) => {
+  //   // TODO
+  // }),
+  // rest.put('/posts/:postId/likes', (req, res, ctx) => {
+  //   // TODO
+  // }),
+  // rest.put('/posts/:postId/forgiven', (req, res, ctx) => {
+  //   // TODO
+  // }
+  // ),
 ];

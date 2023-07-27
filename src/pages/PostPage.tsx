@@ -1,11 +1,12 @@
 
 import { POST } from 'api';
-import { useGetPosts } from 'api/queries';
+// import { useGetPosts } from 'api/queries';
 import { Post } from 'interface';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
+// useEffect,
 
 const PostPage = () => {
-  const { data, isLoading } = useGetPosts();
+  // const { data, isLoading } = useGetPosts();
   const [posts, setPosts] = useState<Post[]>([]);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -38,11 +39,11 @@ const PostPage = () => {
       .catch((e) => console.error(e));
   };
 
-  useEffect(() => {
-    if (data) {
-      setPosts(data.data);
-    }
-  }, [data, posts]);
+  // useEffect(() => {
+  //   if (data) {
+  //     setPosts(data.data);
+  //   }
+  // }, [data, posts]);
 
   return (
     <div>
