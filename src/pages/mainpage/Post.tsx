@@ -1,4 +1,4 @@
-import { PostType, Color } from 'model/post';
+import { PostType, Color } from 'interface/post';
 
 interface PostProps {
   post: PostType;
