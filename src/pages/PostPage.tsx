@@ -1,6 +1,6 @@
 import Header from 'pages/mainpage/Header';
-import PostGuidButton from './PostGuidButton';
-import PostInput from './PostInput';
+import PostGuidButton from 'components/post/PostGuidButton';
+import PostInput from 'components/post/PostInput';
 
 const PostPage = () => {
   return (

@@ -1,5 +1,5 @@
-import arrowDown from 'assets/post/arrow-down.svg';
-import arrowUp from 'assets/post/arrow-up.svg';
+import arrowDown from 'assets/img/arrow-down.svg';
+import arrowUp from 'assets/img/arrow-up.svg';
 import { useState } from 'react';
 const PostGuidButton = () => {
   const [imgPath, setImgPath] = useState(arrowDown);

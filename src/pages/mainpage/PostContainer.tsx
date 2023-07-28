@@ -1,4 +1,4 @@
-import { PostType } from 'model/post';
+import { PostType } from 'interface/post';
 import Post from './Post';
 
 const DUMMY_DATA: PostType[] = [
