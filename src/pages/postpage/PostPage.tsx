@@ -1,12 +1,13 @@
 import Header from 'pages/mainpage/Header';
 import PostGuidButton from './PostGuidButton';
+import PostInput from './PostInput';
 
 const PostPage = () => {
   return (
     <div className={`flex flex-col`}>
       <Header />
       <PostGuidButton />
-      <div>작성</div>
+      <PostInput />
     </div>
   );
 };

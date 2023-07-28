@@ -5,7 +5,6 @@ const PostGuidButton = () => {
   const [imgPath, setImgPath] = useState(arrowDown);
   const [guidFlag, setGuidFlag] = useState(false);
   const guidButtonClick = () => {
-    console.log('call~~');
     if (!guidFlag) {
       setImgPath(arrowUp);
     } else {
