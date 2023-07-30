@@ -1,36 +1,33 @@
-
-import Button from '../designSystems/Button';
-import { colors } from '../designSystems/Colors';
-import {useState} from 'react'
+import Button from '../components/common/Button';
+// import { colors } from '../designSystems/Colors';
+import { useState } from 'react';
 
 const Header = () => {
+  const colors = { border: '#2D4053' };
+
   const isLogin = true;
 
   const [modalOpened, setModalOpened] = useState(false);
-  
 
-  window.addEventListener("load", function () {
-    if(!modalOpened) {
-      const modal = document.querySelector('#modal') as HTMLElement
-      modal.style.visibility = 'hidden'
+  window.addEventListener('load', function () {
+    if (!modalOpened) {
+      const modal = document.querySelector('#modal') as HTMLElement;
+      modal.style.visibility = 'hidden';
     }
   });
-  
 
   const modalHandler = () => {
-    setModalOpened((prev)=> !prev);
+    setModalOpened((prev) => !prev);
     console.log(modalOpened, 'clicked');
 
-    const modal = document.querySelector('#modal') as HTMLElement
-    if(modalOpened){
-      modal.style.visibility = 'visible'
-    }else {
-      modal.style.visibility = 'hidden'
+    const modal = document.querySelector('#modal') as HTMLElement;
+    if (modalOpened) {
+      modal.style.visibility = 'visible';
+    } else {
+      modal.style.visibility = 'hidden';
     }
-  }
+  };
 
-  
-  
   return (
     <>
       <header
@@ -44,10 +41,18 @@ const Header = () => {
             <div className='flex flex-row justify-center'>
               <Button text={'반성문 쓰기'} />
               <div className='w-12 h-12 shrink-0 ml-6'>
-                <div className={`h-full relative items-center justify-center user-icon `} onClick={modalHandler} >
-                  <div id='modal' className={`border border-current w-36 h-32 bg-white flex flex-col justify-around items-center gap-x-5 shadow-md absolute top-12 left-8`} >
+                <div
+                  className={`h-full relative items-center justify-center user-icon `}
+                  onClick={modalHandler}
+                >
+                  <div
+                    id='modal'
+                    className={`border border-current w-36 h-32 bg-white flex flex-col justify-around items-center gap-x-5 shadow-md absolute top-12 left-8`}
+                  >
                     <span className='block text-lg select-none'>어쩌구 님</span>
-                    <button className='w-24 bg-slate-300 border border-current block text-lg hover:shadow-[2px_2px_0px_0px_rgba(32,43,61,1)]'>로그아웃</button>
+                    <button className='w-24 bg-slate-300 border border-current block text-lg hover:shadow-[2px_2px_0px_0px_rgba(32,43,61,1)]'>
+                      로그아웃
+                    </button>
                   </div>
                   <div className='absolute top-[54%] left-1/2 -translate-x-1/2 -translate-y-1/2 '>
                     <svg

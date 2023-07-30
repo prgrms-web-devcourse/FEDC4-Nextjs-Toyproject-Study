@@ -1,3 +1,115 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
+
+@layer base {
+  @font-face {
+    font-family: 'NeoDunggeunmo';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/font/NeoDunggeunmo.woff2') format('woff2'),
+    url('../assets/font/NeoDunggeunmo.woff') format('woff'),
+    url('../assets/font/NeoDunggeunmo.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/font/NotoSansKR-Regular.otf') format('opentype');
+  }
+  @font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: bold;
+    src: url('../assets/font/NotoSansKR-Bold.otf') format('opentype');
+  }
+
+  html {
+    @apply bg-blue-gray-25 text-blue-gray-990;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+}
+
+@layer components {
+  .text-heading-1 {
+    @apply font-dgm;
+    font-size: 32px;
+    line-height: 46px;
+  }
+
+  .text-heading-2 {
+    @apply font-dgm;
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .text-heading-3 {
+    @apply font-dgm;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .text-heading-4 {
+    @apply font-dgm;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .text-heading-5 {
+    @apply font-dgm;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .text-heading-6 {
+    @apply font-dgm;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .text-subtitle-1 {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .text-body-1 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .text-body-2 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .text-button-1 {
+    @apply font-dgm;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .text-button-2 {
+    @apply font-dgm;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .text-caption {
+    @apply font-dgm;
+    font-size: 10px;
+    line-height: 14px;
+  }
+
+  .shadow-card-1 {
+    box-shadow: 10px 10px 0 0 theme('colors.blue-gray-990');
+  }
+
+  .shadow-card-2 {
+    box-shadow: 4px 4px 0 0 theme('colors.blue-gray-990');
+  }
+
+  .shadow-button {
+    box-shadow: 2px 2px 0 0 theme('colors.blue-gray-920');
+  }
+}
