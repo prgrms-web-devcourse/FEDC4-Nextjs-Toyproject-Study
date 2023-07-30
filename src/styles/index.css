@@ -8,9 +8,10 @@
     font-family: 'NeoDunggeunmo';
     font-style: normal;
     font-weight: normal;
-    src: url('../assets/font/NeoDunggeunmo.woff2') format('woff2'),
-    url('../assets/font/NeoDunggeunmo.woff') format('woff'),
-    url('../assets/font/NeoDunggeunmo.ttf') format('truetype');
+    src:
+      url('../assets/font/NeoDunggeunmo.woff2') format('woff2'),
+      url('../assets/font/NeoDunggeunmo.woff') format('woff'),
+      url('../assets/font/NeoDunggeunmo.ttf') format('truetype');
   }
   @font-face {
     font-family: 'Noto Sans KR';
@@ -26,7 +27,7 @@
   }
 
   html {
-    @apply bg-blue-gray-25 text-blue-gray-990;
+    /* @apply bg-blue-gray-25 text-blue-gray-990; */
     font-family: 'Noto Sans KR', sans-serif;
   }
 }

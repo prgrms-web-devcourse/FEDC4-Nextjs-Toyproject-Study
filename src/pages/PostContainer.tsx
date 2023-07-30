@@ -12,7 +12,7 @@ const DUMMY_DATA: PostType[] = [
   {
     id: 2,
     user: '남궁호수',
-    title: '반성문',
+    title: '반성문 길게 제목을 붙여 보자.',
     content:
       '이건 줄 넘어가는 테스트 문장입니다. 이건 줄 넘어가는 테스트 문장입니다. 이건 줄 넘어가는 테스트 문장입니다. 이건 줄 넘어가는 테스트 문장입니다. 이건 줄 넘어가는 테스트 문장입니다. 오늘 과제 제출 레포지토리에 main 브랜치에다 merge를 해버렸습니다... 죄송합니다 삐엔.',
     date: '2023.08.12',
@@ -22,7 +22,7 @@ const DUMMY_DATA: PostType[] = [
     user: '고해성사',
     title: '회고문',
     content:
-      '두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 왜 나는 잠에 들어버렸을까... 왜 저녁에 과식을 했지. 과거의 나야 반성해라.',
+      '두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 두번째 테스트. 왜 나는 잠에 들어버렸을까... 왜 저녁에 과식을 했지. 과거의 나야 반성해라.ㅋㅋㅋㅋㅋ',
     date: '2023.06.01',
   },
   {
@@ -92,12 +92,14 @@ const DUMMY_DATA: PostType[] = [
 
 const PostContainer: React.FC = () => {
   return (
-    <div className='container mx-auto p-4 flex flex-wrap'>
-      {DUMMY_DATA.map((post) => (
-        <div className='p-2 m-3' key={post.id}>
-          <Post post={post} />
-        </div>
-      ))}
+    <div className='flex flex-col pl-[18%] pr-[16%] justify-center items-center w-full bg-blue-gray-25'>
+      <div className='container flex flex-wrap py-14'>
+        {DUMMY_DATA.map((post) => (
+          <div className='p-3 h-96' key={post.id}>
+            <Post post={post} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
