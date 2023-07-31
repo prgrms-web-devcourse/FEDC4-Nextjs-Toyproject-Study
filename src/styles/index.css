@@ -103,14 +103,14 @@
   }
 
   .shadow-card-1 {
-    box-shadow: 10px 10px 0 0 theme('colors.blue-gray-990');
+    box-shadow: 10px 10px 0 0 theme('colors.blue-gray.990');
   }
 
   .shadow-card-2 {
-    box-shadow: 4px 4px 0 0 theme('colors.blue-gray-990');
+    box-shadow: 4px 4px 0 0 theme('colors.blue-gray.990');
   }
 
   .shadow-button {
-    box-shadow: 2px 2px 0 0 theme('colors.blue-gray-920');
+    box-shadow: 2px 2px 0 0 theme('colors.blue-gray.920');
   }
 }
