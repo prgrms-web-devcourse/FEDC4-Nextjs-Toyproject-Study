@@ -1,9 +1,11 @@
 import { LargeButton } from '../../components/common/Button';
-// import { colors } from 'designSystems/Colors';
 
 const Header = () => {
-  const colors = { border: '#2D4053' };
+  const colors = {
+    border: '#2D4053',
+  };
   const isLogin = true;
+
   return (
     <>
       <header
