@@ -5,14 +5,14 @@ interface PostProps {
 }
 
 const backgroundColors: Color = {
-  0: 'bg-[#ffcac8]',
-  1: 'bg-[#fbd0f5]',
-  2: 'bg-[#b8b5ff]',
-  3: 'bg-[#94daff]',
-  4: 'bg-[#c7f5fe]',
-  5: 'bg-[#a3f7bf]',
-  6: 'bg-[#deff8b]',
-  7: 'bg-[#f3f798]',
+  0: 'bg-template-red',
+  1: 'bg-template-pink',
+  2: 'bg-template-purple',
+  3: 'bg-template-blue',
+  4: 'bg-template-sky',
+  5: 'bg-template-green',
+  6: 'bg-template-lime',
+  7: 'bg-template-yellow',
 };
 
 const Post: React.FC<PostProps> = ({ post }) => {
