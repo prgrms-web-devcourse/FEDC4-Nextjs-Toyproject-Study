@@ -1,8 +1,11 @@
-import Button from 'designSystems/Button';
-import { colors } from 'designSystems/Colors';
+import { LargeButton } from '../../components/common/Button';
 
 const Header = () => {
+  const colors = {
+    border: '#2D4053',
+  };
   const isLogin = true;
+
   return (
     <>
       <header
@@ -14,7 +17,7 @@ const Header = () => {
         <div className='postButton'>
           {isLogin ? (
             <div className='flex flex-row justify-center'>
-              <Button text={'반성문 쓰기'} />
+              <LargeButton text={'반성문 쓰기'} />
               <div className='w-12 h-12 shrink-0 ml-6'>
                 <div className='h-full relative items-center justify-center'>
                   <div className='absolute top-[54%] left-1/2 -translate-x-1/2 -translate-y-1/2'>
@@ -85,7 +88,7 @@ const Header = () => {
               </div>
             </div>
           ) : (
-            <Button text={'로그인'} />
+            <LargeButton text={'로그인'} />
           )}
         </div>
       </header>
