@@ -7,5 +7,5 @@ export interface PostType {
 }
 
 export type Color = {
-    [key: number]: string
-}
+    [key:number]: string
+};
