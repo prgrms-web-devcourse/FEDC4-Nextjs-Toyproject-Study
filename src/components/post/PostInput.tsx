@@ -12,8 +12,10 @@ import { Input } from 'components/common/Input';
 import { SmallButton } from 'components/common/Button';
 import { useMutation } from 'react-query';
 import { createPost } from 'api/postApi';
+import { useNavigate } from 'react-router-dom';
 
 const PostInput = () => {
+  const navigate = useNavigate();
   const imgArr = [
     null,
     icon_01,
@@ -41,14 +43,14 @@ const PostInput = () => {
     content: '',
     templateType: {
       color: '#FFFFFF',
-      icon: '',
+      icon: null,
     },
     team: '',
   };
 
   const mutation = useMutation(createPost, {
     onSuccess: (data) => {
-      console.log('useGetPosts: ', data);
+      navigate('/');
     },
     onError: () => {
       console.log('error~~');
@@ -73,6 +75,9 @@ const PostInput = () => {
     mutation.mutate(newState);
   };
   const [state, setState] = useState(initialState);
+  const [selectedIconId, setSelectedIconId] = useState('img0');
+  const [selectedTemplateId, setSelectedTemplateId] = useState('#FFFFFF0');
+
   return (
     <div
       className={`flex flex-col justify-center pb-12 px-20 justify-center items-center w-full`}
@@ -112,12 +117,15 @@ const PostInput = () => {
         <div className={`flex w-11/12 pt-5 justify-start items-center`}>
           <span className={`font-dgm whitespace-nowrap`}>배경색</span>
           {colorArr.map((color, index) => {
+            const id = color + index; // 이 부분이 빠졌었습니다.
+
             return (
               <ColorPicker
                 key={color + index}
                 id={color + index}
                 color={color}
-                onColorSelect={(color) => {
+                isSelected={selectedTemplateId === id}
+                onColorSelect={(color, id) => {
                   setState((prevState) => ({
                     ...prevState,
                     templateType: {
@@ -125,6 +133,7 @@ const PostInput = () => {
                       color,
                     },
                   }));
+                  setSelectedTemplateId(id);
                 }}
               />
             );
@@ -133,13 +142,15 @@ const PostInput = () => {
         <div className={`flex w-11/12 py-5 justify-start items-center`}>
           <span className={`font-dgm`}>아이콘</span>
           {imgArr.map((src, index) => {
+            const id = 'img' + index;
             return (
               <IconButton
                 key={'img' + index}
                 id={'img' + index}
                 src={src}
                 alt={''}
-                onIconSelect={(src) => {
+                isSelected={selectedIconId === id}
+                onIconSelect={(src, id) => {
                   setState((prevState) => ({
                     ...prevState,
                     templateType: {
@@ -147,6 +158,7 @@ const PostInput = () => {
                       icon: src,
                     },
                   }));
+                  setSelectedIconId(id);
                 }}
               />
             );
