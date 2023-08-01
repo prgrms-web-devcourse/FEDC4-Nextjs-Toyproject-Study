@@ -8,7 +8,10 @@ import icon_07 from 'assets/img/icon_07.svg';
 import IconButton from '../../components/post/IconButton';
 import ColorPicker from '../../components/post/ColorPicker';
 import { useState } from 'react';
-import { s } from 'msw/lib/glossary-de6278a9';
+import { Input } from 'components/common/Input';
+import { SmallButton } from 'components/common/Button';
+import { useMutation } from 'react-query';
+import { createPost } from 'api/postApi';
 
 const PostInput = () => {
   const imgArr = [
@@ -43,8 +46,31 @@ const PostInput = () => {
     team: '',
   };
 
+  const mutation = useMutation(createPost, {
+    onSuccess: (data) => {
+      console.log('useGetPosts: ', data);
+    },
+    onError: () => {
+      console.log('error~~');
+    },
+  });
+
   const postApi = async () => {
-    console.log(state);
+    const { title, content } = state;
+    if (title.length === 0) {
+      alert('타이틀은 필수 값입니다.');
+      return;
+    }
+    if (content.length === 0) {
+      alert('본문 입력은 필수 값입니다.');
+      return;
+    }
+    const newState = {
+      ...state,
+      templateType: JSON.stringify(state.templateType),
+    };
+
+    mutation.mutate(newState);
   };
   const [state, setState] = useState(initialState);
   return (
@@ -52,14 +78,15 @@ const PostInput = () => {
       className={`flex flex-col justify-center pb-12 px-20 justify-center items-center w-full`}
     >
       <div
-        className={`flex flex-col justify-center items-center w-1/2  border border-solid border-[#2D4053] shadow-custom`}
+        className={`flex flex-col justify-center items-center w-1/2  border border-solid border-blue-gray-880 shadow-card-1 `}
       >
         <div
-          className={`text-left flex items-center justify-center w-11/12 h-10 my-5 border border-solid border-[#2D4053]`}
+          className={`text-left flex items-center justify-center w-11/12 h-10 my-5`}
         >
-          <input
-            className={`w-full pl-1 focus:outline-none`}
-            placeholder={'제목을 입력해 주세요.'}
+          <Input
+            id={'postTitle'}
+            placeHolder={'제목을 입력해 주세요'}
+            disabled={false}
             onChange={(e) => {
               setState((prevState) => ({
                 ...prevState,
@@ -83,7 +110,7 @@ const PostInput = () => {
           />
         </div>
         <div className={`flex w-11/12 pt-5 justify-start items-center`}>
-          <span>배경색</span>
+          <span className={`font-dgm whitespace-nowrap`}>배경색</span>
           {colorArr.map((color, index) => {
             return (
               <ColorPicker
@@ -104,7 +131,7 @@ const PostInput = () => {
           })}
         </div>
         <div className={`flex w-11/12 py-5 justify-start items-center`}>
-          <span>아이콘</span>
+          <span className={`font-dgm`}>아이콘</span>
           {imgArr.map((src, index) => {
             return (
               <IconButton
@@ -126,10 +153,8 @@ const PostInput = () => {
           })}
         </div>
       </div>
-      <div
-        className={`flex items-center justify-center text-xl shadow-custom my-6 w-36 h-10 border border-solid border-[#202B3D] bg-[#D7E2EB]`}
-      >
-        <button onClick={postApi}>반성문 제출</button>
+      <div className={`flex items-center justify-center my-6`}>
+        <SmallButton text={`반성문 제출`} onClick={postApi}></SmallButton>
       </div>
     </div>
   );
