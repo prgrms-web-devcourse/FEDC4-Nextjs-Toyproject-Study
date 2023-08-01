@@ -75,8 +75,6 @@ const PostInput = () => {
     mutation.mutate(newState);
   };
   const [state, setState] = useState(initialState);
-  const [selectedIconId, setSelectedIconId] = useState('img0');
-  const [selectedTemplateId, setSelectedTemplateId] = useState('#FFFFFF0');
 
   return (
     <div
@@ -105,7 +103,7 @@ const PostInput = () => {
         >
           <textarea
             className={`w-full h-full pl-1 pt-1 focus:outline-none resize-none`}
-            placeholder={'반성문 제목을 입력해 주세요'}
+            placeholder={'반성문 내용을 입력해주세요.'}
             onChange={(e) => {
               setState((prevState) => ({
                 ...prevState,
@@ -117,15 +115,16 @@ const PostInput = () => {
         <div className={`flex w-11/12 pt-5 justify-start items-center`}>
           <span className={`font-dgm whitespace-nowrap`}>배경색</span>
           {colorArr.map((color, index) => {
-            const id = color + index; // 이 부분이 빠졌었습니다.
+            const id = color;
+            const selected = state.templateType.color;
 
             return (
               <ColorPicker
-                key={color + index}
-                id={color + index}
+                key={color}
+                id={color}
                 color={color}
-                isSelected={selectedTemplateId === id}
-                onColorSelect={(color, id) => {
+                isSelected={selected === id}
+                onColorSelect={(color) => {
                   setState((prevState) => ({
                     ...prevState,
                     templateType: {
@@ -133,7 +132,6 @@ const PostInput = () => {
                       color,
                     },
                   }));
-                  setSelectedTemplateId(id);
                 }}
               />
             );
@@ -142,14 +140,13 @@ const PostInput = () => {
         <div className={`flex w-11/12 py-5 justify-start items-center`}>
           <span className={`font-dgm`}>아이콘</span>
           {imgArr.map((src, index) => {
-            const id = 'img' + index;
+            const selected = state.templateType.icon;
             return (
               <IconButton
-                key={'img' + index}
-                id={'img' + index}
+                key={src}
                 src={src}
                 alt={''}
-                isSelected={selectedIconId === id}
+                isSelected={selected === src}
                 onIconSelect={(src, id) => {
                   setState((prevState) => ({
                     ...prevState,
@@ -158,7 +155,6 @@ const PostInput = () => {
                       icon: src,
                     },
                   }));
-                  setSelectedIconId(id);
                 }}
               />
             );
