@@ -1,9 +1,9 @@
 const IconButton = ({ src, alt, onIconSelect, isSelected }) => {
-  const shadowClass = isSelected ? 'shadow-button' : '';
+  const shadowClass = isSelected ? 'shadow-button-1' : '';
 
   return !src ? (
     <div
-      className={`flex items-center justify-center h-10 w-10 mx-3 cursor-pointer border border-solid border-blue-gray-880 hover:shadow-button ${shadowClass}`}
+      className={`flex items-center justify-center h-10 w-10 mx-3 cursor-pointer border border-solid border-blue-gray-880 hover:shadow-button-1 ${shadowClass}`}
       onClick={() => onIconSelect(src)}
     >
       <span className={`text-center text-xs`}>
@@ -14,7 +14,7 @@ const IconButton = ({ src, alt, onIconSelect, isSelected }) => {
     </div>
   ) : (
     <div
-      className={`h-10 w-10 mx-3 cursor-pointer hover:shadow-button ${shadowClass}`}
+      className={`h-10 w-10 mx-3 cursor-pointer hover:shadow-button-1 ${shadowClass}`}
       onClick={() => onIconSelect(src)}
     >
       <img src={src} alt={alt} />
