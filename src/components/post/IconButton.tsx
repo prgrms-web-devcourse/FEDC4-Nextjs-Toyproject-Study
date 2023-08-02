@@ -1,4 +1,4 @@
-const IconButton = ({ id, src, alt, onIconSelect, isSelected }) => {
+const IconButton = ({ src, alt, onIconSelect, isSelected }) => {
   const shadowClass = isSelected ? 'shadow-button' : '';
 
   return !src ? (
@@ -14,9 +14,8 @@ const IconButton = ({ id, src, alt, onIconSelect, isSelected }) => {
     </div>
   ) : (
     <div
-      id={id}
       className={`h-10 w-10 mx-3 cursor-pointer hover:shadow-button ${shadowClass}`}
-      onClick={() => onIconSelect(src, id)}
+      onClick={() => onIconSelect(src)}
     >
       <img src={src} alt={alt} />
     </div>

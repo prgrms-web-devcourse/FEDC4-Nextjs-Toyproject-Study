@@ -147,7 +147,7 @@ const PostInput = () => {
                 src={src}
                 alt={''}
                 isSelected={selected === src}
-                onIconSelect={(src, id) => {
+                onIconSelect={(src) => {
                   setState((prevState) => ({
                     ...prevState,
                     templateType: {
