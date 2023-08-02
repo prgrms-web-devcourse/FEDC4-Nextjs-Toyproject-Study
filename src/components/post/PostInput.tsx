@@ -88,6 +88,7 @@ const PostInput = () => {
         >
           <Input
             id={'postTitle'}
+            value={state.title}
             placeHolder={'제목을 입력해 주세요'}
             disabled={false}
             onChange={(e) => {
