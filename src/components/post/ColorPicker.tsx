@@ -1,5 +1,5 @@
 const ColorPicker = ({ id, color, onColorSelect, isSelected }) => {
-  const shadowClass = isSelected ? 'shadow-button-1' : '';
+  const shadowClass = isSelected ? 'shadow-button' : '';
 
   return (
     <div
