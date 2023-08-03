@@ -48,7 +48,16 @@ const Modal: FC<ModalProps> = (postId) => {
                   <ImageView postData={state.postData} />
                   <Comment
                     comment={state.postData.comment}
-                    addComment={(newComment) => {}}
+                    addComment={(newComment) => {
+                      const updatedState = { ...state };
+                      if (updatedState.postData.comment) {
+                        updatedState.postData.comment = [
+                          ...updatedState.postData.comment,
+                          newComment,
+                        ];
+                      }
+                      setState(updatedState);
+                    }}
                   />
                 </>
               )}

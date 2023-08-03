@@ -40,6 +40,8 @@ const Comment = ({ comment, addComment }) => {
                 name: '유저 정보에서 넣어주세요',
               },
               commentId: comment[comment.length - 1].commentId + 1,
+              createAt: '',
+              updateAt: '',
             };
             addComment(newComment);
           }}
