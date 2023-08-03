@@ -30,7 +30,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
     >
       {showModal ? (
         <div>
-          <Modal post={post} />
+          <Modal postId={post.id} />
         </div>
       ) : (
         <div>.</div>

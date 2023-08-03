@@ -4,8 +4,6 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import './styles/index.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { Provider } from 'react-redux';
-import store from 'store/store';
 
 const queryClient = new QueryClient();
 

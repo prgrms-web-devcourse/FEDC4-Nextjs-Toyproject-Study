@@ -7,5 +7,38 @@ export interface PostType {
 }
 
 export type Color = {
-  [key: number]: string,
+  [key: number]: string;
 };
+
+export interface postModalType {
+  isLoading: boolean;
+  errorMessage: string;
+  postData: PostData;
+}
+
+interface PostData {
+  postId?: number;
+  title?: string;
+  content?: string;
+  createAt?: string;
+  isAnonymous?: string;
+  likeCount?: string;
+  team?: string;
+  templateType?: {
+    color: string;
+    icon: string;
+  };
+  updateAt?: string;
+  comment?: Array<{
+    commentId: number;
+    comment: string;
+    createAt: string;
+    updateAt: string;
+    user: {
+      name: string;
+    };
+  }>;
+  user?: {
+    name: string;
+  };
+}

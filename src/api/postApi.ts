@@ -12,7 +12,6 @@ export const getPost = async ({ pageId }) => {
 
 export const getPostDetail = async ({ postId }) => {
   const response = await request.get(`/posts/${postId}`);
-  console.log('response', response);
   return response.data;
 };
 
