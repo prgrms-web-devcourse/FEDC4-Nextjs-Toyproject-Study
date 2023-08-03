@@ -4,11 +4,9 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import './styles/index.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { worker } from './mocks/browser';
+import { Provider } from 'react-redux';
+import store from 'store/store';
 
-if (process.env.NODE_ENV === 'development') {
-  worker.start();
-}
 const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
