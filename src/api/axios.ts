@@ -1,16 +1,24 @@
 import axios from 'axios';
 import { store } from '../store';
 
-const accessToken = store.getState().auth.accessToken;
-
 const request = axios.create({
   baseURL: process.env.REACT_APP_API + '/api',
   headers: {
     'Content-Type': 'application/json',
     'x-api-key': process.env.REACT_APP_KEY,
     Accept: '*/*',
-    Authorization: `Bearer ${accessToken}`,
   },
 });
+
+request.interceptors.request.use(
+  (config) => {
+    const accessToken = store.getState().auth.accessToken;
+    config.headers.Authorization = `Bearer ${accessToken}`;
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  },
+);
 
 export default request;
