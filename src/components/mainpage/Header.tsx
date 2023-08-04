@@ -1,8 +1,10 @@
 import { LargeButton } from '../common/Button';
 import { useState } from 'react';
 import { SmallButton } from '../common/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
   const isLogin = true;
 
   const [modalOpened, setModalOpened] = useState(false);
@@ -26,6 +28,10 @@ const Header = () => {
     }
   };
 
+  const routePostPage = () => {
+    navigate('/post');
+  };
+
   return (
     <>
       <header
@@ -38,7 +44,10 @@ const Header = () => {
           <div className='postButton mr-10'>
             {isLogin ? (
               <div className='flex flex-row justify-center'>
-                <LargeButton text={'반성문 쓰기'} />
+                <LargeButton
+                  text={'반성문 쓰기'}
+                  onClick={() => routePostPage()}
+                />
                 <div className='h-[40px] ml-10'>
                   <div
                     className={`h-full relative items-center justify-center user-icon cursor-pointer`}
