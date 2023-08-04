@@ -3,6 +3,7 @@ import Layout from '../components/common/Layout';
 import MainPage from '../pages/mainpage/MainPage';
 import PostPage from '../pages/PostPage';
 import LoginPage from '../pages/LoginPage';
+import SignupPage from '../pages/SignupPage';
 
 const Routes = () => {
   return (
@@ -11,6 +12,7 @@ const Routes = () => {
         <Route path='/' element={<MainPage />} />
         <Route path='/post' element={<PostPage />} />
         <Route path='/login' element={<LoginPage />} />
+        <Route path='/signup' element={<SignupPage />} />
         <Route path='*' element={<Navigate replace to='/' />} />
       </Route>
     </ReactRouters>
