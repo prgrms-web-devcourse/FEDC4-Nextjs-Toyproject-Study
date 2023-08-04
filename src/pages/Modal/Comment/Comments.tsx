@@ -2,6 +2,7 @@ import { Input } from 'components/common/Input';
 import { FC, useEffect, useState } from 'react';
 import Top from '../Top/Top';
 import { SmallButton } from '../../../components/common/Button';
+import { createComment } from 'api/comment';
 
 const Comment = ({ comment, addComment }) => {
   const [commentValue, setCommentValue] = useState('');
@@ -25,6 +26,25 @@ const Comment = ({ comment, addComment }) => {
           onChange={(e) => {
             setCommentValue(e.target.value);
           }}
+          onKeyDown={(e) => {
+            if (e.keyCode == 13) {
+              const newComment = {
+                comment: commentValue,
+                user: {
+                  name: '유저 정보에서 넣어주세요',
+                },
+                commentId: comment[comment.length - 1].commentId + 1,
+                createAt: '',
+                updateAt: '',
+              };
+              addComment(newComment);
+              setCommentValue('');
+              createComment({
+                postId: newComment.commentId,
+                comment: newComment.comment,
+              });
+            }
+          }}
         />
         <SmallButton
           text={'게시'}
@@ -40,6 +60,10 @@ const Comment = ({ comment, addComment }) => {
             };
             addComment(newComment);
             setCommentValue('');
+            createComment({
+              postId: newComment.commentId,
+              comment: newComment.comment,
+            });
           }}
         ></SmallButton>
       </div>
