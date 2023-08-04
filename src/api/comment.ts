@@ -1,10 +1,9 @@
 import request from './axios';
 
 export const createComment = async ({ postId, comment }) => {
-  const response = await request.post(`/${postId}/comments`, {
+  const response = await request.post(`/posts/${postId}/comments`, {
     comment: comment,
   });
-  console.log(response.data);
   return response.data;
 };
 

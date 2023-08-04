@@ -3,9 +3,19 @@ import { FC, useEffect, useState } from 'react';
 import Top from '../Top/Top';
 import { SmallButton } from '../../../components/common/Button';
 import { createComment } from 'api/comment';
+import { useMutation } from 'react-query';
 
 const Comment = ({ comment, addComment }) => {
   const [commentValue, setCommentValue] = useState('');
+
+  const mutation = useMutation(createComment, {
+    onSuccess: (data) => {
+      console.log('data send success');
+    },
+    onError: (e) => {
+      console.log('error~~');
+    },
+  });
 
   return (
     <div>
@@ -39,8 +49,8 @@ const Comment = ({ comment, addComment }) => {
               };
               addComment(newComment);
               setCommentValue('');
-              createComment({
-                postId: newComment.commentId,
+              mutation.mutate({
+                postId: 59,
                 comment: newComment.comment,
               });
             }
@@ -60,8 +70,8 @@ const Comment = ({ comment, addComment }) => {
             };
             addComment(newComment);
             setCommentValue('');
-            createComment({
-              postId: newComment.commentId,
+            mutation.mutate({
+              postId: 59,
               comment: newComment.comment,
             });
           }}
