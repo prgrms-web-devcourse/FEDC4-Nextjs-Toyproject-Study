@@ -1,4 +1,4 @@
-import Header from 'pages/mainpage/Header';
+import Header from 'components/mainpage/Header';
 import PostGuidButton from 'components/post/PostGuidButton';
 import PostInput from 'components/post/PostInput';
 
