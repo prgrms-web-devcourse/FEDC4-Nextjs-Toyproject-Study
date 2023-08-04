@@ -1,5 +1,5 @@
-import PostContainer from './PostContainer';
-import Header from './Header';
+import PostContainer from 'components/mainpage/PostContainer';
+import Header from 'components/mainpage/Header';
 
 const MainPage: React.FC = () => {
   return (
