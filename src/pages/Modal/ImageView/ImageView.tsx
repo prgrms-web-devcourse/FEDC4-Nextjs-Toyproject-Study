@@ -15,17 +15,25 @@ const ImageView = ({ postData }) => {
   console.log(`${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`);
   return (
     <div
-      className={`flex flex-col justify-center items-center`}
+      className={`mx-3 w-[478px] h-[688px] flex-col justify-center items-center`}
       style={{ backgroundColor: template?.color }}
     >
-      <h2 className='text-x1 font-bold mb-5 text-center'>{title}</h2>
-      <p className='mb-10 h-36'>{content}</p>
-      <h4 className='font-semibold text-right'>{user?.name}</h4>
-      <h5 className='font-medium text-right'>
-        {date.getFullYear()}.{date.getMonth() + 1}.{date.getDate()}
-      </h5>
+      <div className={`p-12`}>
+        <span className='font-dgm text-heading-2 font-bold text-center'>
+          {title}
+        </span>
+      </div>
+      <div className={`m-10 h-[360px]`}>
+        <span className='text-heading-4 text-center'>{content}</span>
+      </div>
+      <div className={`flex flex-col mr-10 mt-20`}>
+        <span className='text-heading-5 text-right'>
+          {date.getFullYear()}.{date.getMonth() + 1}.{date.getDate()}
+        </span>
+        <span className='text-heading-3 text-right'>{user?.name}</span>
+      </div>
       <img
-        className={`h-10 w-10 absolute bottom-10 left-10`}
+        className={`h-[120px] w-[120px] absolute bottom-10 left-10`}
         src={template?.icon}
       ></img>
     </div>

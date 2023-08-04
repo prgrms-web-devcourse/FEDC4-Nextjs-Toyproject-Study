@@ -28,13 +28,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
       } shadow-md h-80 w-64 rounded p-5 m-auto`}
       onClick={handleModalToggle}
     >
-      {showModal ? (
-        <div>
-          <Modal postId={post.id} />
-        </div>
-      ) : (
-        <div>.</div>
-      )}
       <h2 className='text-x1 font-bold mb-5 text-center'>{post.title}</h2>
       <p className='mb-10 h-36'>{post.content}</p>
       <h4 className='font-semibold text-right'>{post.user}</h4>

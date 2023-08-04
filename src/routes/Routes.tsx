@@ -11,7 +11,6 @@ const Routes = () => {
         <Route path='/' element={<MainPage />} />
         <Route path='/post' element={<PostPage />} />
         <Route path='*' element={<Navigate replace to='/' />} />
-        <Route path='/modal' element={<Modal postId={59} />} />
       </Route>
     </ReactRouters>
   );
