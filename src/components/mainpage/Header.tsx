@@ -1,6 +1,6 @@
-import { LargeButton } from '../../components/common/Button';
+import { LargeButton } from '../common/Button';
 import { useState } from 'react';
-import { SmallButton } from '../../components/common/Button';
+import { SmallButton } from '../common/Button';
 
 const Header = () => {
   const isLogin = true;
