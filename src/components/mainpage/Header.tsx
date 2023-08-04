@@ -28,6 +28,10 @@ const Header = () => {
     }
   };
 
+  const routeMainPage = () => {
+    navigate('/');
+  };
+
   const routePostPage = () => {
     navigate('/post');
   };
@@ -38,7 +42,10 @@ const Header = () => {
         className={`px-[18%] h-20 bg-blue-gray-10 border-b border-solid border-blue-gray-880`}
       >
         <div className='flex flex-row h-20 justify-between pl-12 pr-10 py-5 text-center'>
-          <div className='text-heading-1 leading-10 flex justify-center items-center select-none'>
+          <div
+            className='text-heading-1 leading-10 flex justify-center items-center select-none'
+            onClick={() => routeMainPage()}
+          >
             고해성사
           </div>
           <div className='postButton mr-10'>
