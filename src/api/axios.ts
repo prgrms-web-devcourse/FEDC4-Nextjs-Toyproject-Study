@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { store } from '../store';
 
 const request = axios.create({
   baseURL: process.env.REACT_APP_API + '/api',
@@ -6,8 +7,18 @@ const request = axios.create({
     'Content-Type': 'application/json',
     'x-api-key': process.env.REACT_APP_KEY,
     Accept: '*/*',
-    Authorization: 'Bearer ', //로그인 되면 세션에서 토큰을 가져와야 할거 같아요!!
   },
 });
+
+request.interceptors.request.use(
+  (config) => {
+    const accessToken = store.getState().auth.accessToken;
+    config.headers.Authorization = `Bearer ${accessToken}`;
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  },
+);
 
 export default request;
