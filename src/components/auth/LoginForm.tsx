@@ -65,7 +65,7 @@ const LoginForm = () => {
   return (
     <>
       <form className='max-w-md mx-auto' onSubmit={handleSubmit}>
-        <div className='px-5 py-6 border border-[#2D4053] bg-white shadow-card-1'>
+        <div className='px-5 py-6 border border-blue-gray-880 bg-white shadow-card-1'>
           <AuthInput
             label='아이디'
             id='id'
