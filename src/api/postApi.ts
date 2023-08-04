@@ -11,6 +11,7 @@ export const getPost = async ({ pageId }) => {
 };
 
 export const getPostDetail = async ({ postId }) => {
+  console.log('.env', process.env.REACT_APP_API);
   const response = await request.get(`/posts/${postId}`);
   return response.data;
 };

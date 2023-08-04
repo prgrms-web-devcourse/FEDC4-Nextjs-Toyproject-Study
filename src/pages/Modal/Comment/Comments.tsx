@@ -1,13 +1,7 @@
 import { Input } from 'components/common/Input';
 import { FC, useEffect, useState } from 'react';
-import { PostData } from 'interface/comment';
 import Top from '../Top/Top';
 import { SmallButton } from '../../../components/common/Button';
-import { postModalType } from '../../../interface/post';
-
-// interface CommentProps {
-//   post: PostData;
-// }
 
 const Comment = ({ comment, addComment }) => {
   const [commentValue, setCommentValue] = useState('');
@@ -20,13 +14,14 @@ const Comment = ({ comment, addComment }) => {
         {comment?.map((comment) => (
           <div className='p-2 m-3' key={comment.commentId}>
             <p>{comment.user.name}</p>
-            <p>{comment.comment}</p>s
+            <p>{comment.comment}</p>
           </div>
         ))}
         <Input
           id={'commentInput'}
           placeHolder={'댓글을 입력해주세요.'}
           disabled={false}
+          value={commentValue}
           onChange={(e) => {
             setCommentValue(e.target.value);
           }}
@@ -44,6 +39,7 @@ const Comment = ({ comment, addComment }) => {
               updateAt: '',
             };
             addComment(newComment);
+            setCommentValue('');
           }}
         ></SmallButton>
       </div>

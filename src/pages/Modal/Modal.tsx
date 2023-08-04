@@ -4,6 +4,7 @@ import Comment from './Comment/Comments';
 import { getPostDetail } from 'api/postApi';
 import { PostData } from 'interface/comment';
 import { postModalType, PostType } from 'interface/post';
+import { response } from 'express';
 
 interface ModalProps {
   postId: number;
