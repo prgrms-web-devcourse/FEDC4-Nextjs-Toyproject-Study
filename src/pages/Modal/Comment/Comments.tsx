@@ -21,23 +21,47 @@ const Comment = ({ comment, addComment }) => {
     <div>
       <div className='flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t'></div>
       <Top />
-      <div>
-        {comment?.map((comment) => (
-          <div className='p-2 m-3' key={comment.commentId}>
-            <p>{comment.user.name}</p>
-            <p>{comment.comment}</p>
-          </div>
-        ))}
-        <Input
-          id={'commentInput'}
-          placeHolder={'댓글을 입력해주세요.'}
-          disabled={false}
-          value={commentValue}
-          onChange={(e) => {
-            setCommentValue(e.target.value);
-          }}
-          onKeyDown={(e) => {
-            if (e.keyCode == 13) {
+      <div className='flex flex-col ...'>
+        <div className='flex flex-col ...'>
+          {comment?.map((comment) => (
+            <div className='p-2 m-3' key={comment.commentId}>
+              <p>{comment.user.name}</p>
+              <p>{comment.comment}</p>
+            </div>
+          ))}
+        </div>
+        <div className='flex flex-row ...'>
+          <Input
+            id={'commentInput'}
+            placeHolder={'댓글을 입력해주세요.'}
+            disabled={false}
+            value={commentValue}
+            onChange={(e) => {
+              setCommentValue(e.target.value);
+            }}
+            onKeyDown={(e) => {
+              if (e.keyCode == 13) {
+                const newComment = {
+                  comment: commentValue,
+                  user: {
+                    name: '유저 정보에서 넣어주세요',
+                  },
+                  commentId: comment[comment.length - 1].commentId + 1,
+                  createAt: '',
+                  updateAt: '',
+                };
+                addComment(newComment);
+                setCommentValue('');
+                mutation.mutate({
+                  postId: 59,
+                  comment: newComment.comment,
+                });
+              }
+            }}
+          />
+          <SmallButton
+            text={'게시'}
+            onClick={() => {
               const newComment = {
                 comment: commentValue,
                 user: {
@@ -53,29 +77,9 @@ const Comment = ({ comment, addComment }) => {
                 postId: 59,
                 comment: newComment.comment,
               });
-            }
-          }}
-        />
-        <SmallButton
-          text={'게시'}
-          onClick={() => {
-            const newComment = {
-              comment: commentValue,
-              user: {
-                name: '유저 정보에서 넣어주세요',
-              },
-              commentId: comment[comment.length - 1].commentId + 1,
-              createAt: '',
-              updateAt: '',
-            };
-            addComment(newComment);
-            setCommentValue('');
-            mutation.mutate({
-              postId: 59,
-              comment: newComment.comment,
-            });
-          }}
-        ></SmallButton>
+            }}
+          ></SmallButton>
+        </div>
       </div>
     </div>
   );

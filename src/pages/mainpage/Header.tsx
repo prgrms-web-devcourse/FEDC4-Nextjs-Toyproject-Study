@@ -1,6 +1,6 @@
 import { LargeButton } from '../../components/common/Button';
 
-const Header = () => {
+const Header: React.FC = () => {
   const colors = {
     border: '#2D4053',
   };

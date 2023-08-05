@@ -4,6 +4,7 @@ import Modal from 'pages/Modal/Modal';
 
 interface PostProps {
   post: PostType;
+  handleModalToggle: () => void;
 }
 
 const backgroundColors: Color = {
@@ -13,12 +14,9 @@ const backgroundColors: Color = {
   3: 'bg-green-200',
 };
 
-const Post: React.FC<PostProps> = ({ post }) => {
-  const [showModal, setShowModal] = useState<boolean>(false);
-
-  const handleModalToggle = () => {
-    if (showModal === false) setShowModal(true);
-    else return;
+const Post: React.FC<PostProps> = ({ post, handleModalToggle }) => {
+  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    handleModalToggle();
   };
 
   return (
@@ -28,13 +26,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
       } shadow-md h-80 w-64 rounded p-5 m-auto`}
       onClick={handleModalToggle}
     >
-      {showModal ? (
-        <div>
-          <Modal postId={post.id} />
-        </div>
-      ) : (
-        <div>.</div>
-      )}
       <h2 className='text-x1 font-bold mb-5 text-center'>{post.title}</h2>
       <p className='mb-10 h-36'>{post.content}</p>
       <h4 className='font-semibold text-right'>{post.user}</h4>

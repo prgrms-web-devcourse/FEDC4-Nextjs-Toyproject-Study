@@ -89,12 +89,15 @@ const DUMMY_DATA: PostType[] = [
   },
 ];
 
-const PostContainer: React.FC = () => {
+interface PostContainerProps {
+  handleModalToggle: () => void;
+}
+const PostContainer: React.FC<PostContainerProps> = ({ handleModalToggle }) => {
   return (
     <div className='container mx-auto p-4 flex flex-wrap'>
       {DUMMY_DATA.map((post) => (
         <div className='p-2 m-3' key={post.id}>
-          <Post post={post} />
+          <Post post={post} handleModalToggle={handleModalToggle} />
         </div>
       ))}
     </div>

@@ -12,7 +12,6 @@ const ImageView = ({ postData }) => {
   const { title, content, updatedAt, user, templateType } = postData;
   templateType ? (template = JSON.parse(templateType)) : '';
   const date = new Date(postData.updateAt);
-  console.log(`${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`);
   return (
     <div
       className={`flex flex-col justify-center items-center`}
