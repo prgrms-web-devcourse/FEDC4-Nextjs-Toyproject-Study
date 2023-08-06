@@ -60,6 +60,7 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
             <>
               <ImageView postData={state.postData} />
               <Comment
+                likeCount={state.postData.likeCount}
                 postId={state.postData.postId}
                 isLike={state.postData.isLike}
                 comment={state.postData.comment}
@@ -76,6 +77,17 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
                 clickLike={(isLike) => {
                   const updatedState = { ...state };
                   updatedState.postData.isLike = isLike;
+                  if (updatedState.postData.isLike) {
+                    updatedState.postData.likeCount =
+                      (updatedState.postData.likeCount || 0) + 1;
+                  } else {
+                    if (
+                      updatedState.postData.likeCount &&
+                      updatedState.postData.likeCount !== 0
+                    ) {
+                      updatedState.postData.likeCount -= 1;
+                    }
+                  }
                   setState(updatedState);
                 }}
               />

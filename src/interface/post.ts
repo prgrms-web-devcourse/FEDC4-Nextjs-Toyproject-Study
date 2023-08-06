@@ -22,7 +22,7 @@ interface PostData {
   content?: string;
   createAt?: string;
   isAnonymous?: string;
-  likeCount?: string;
+  likeCount?: number;
   team?: string;
   isLike?: boolean;
   templateType?: {
