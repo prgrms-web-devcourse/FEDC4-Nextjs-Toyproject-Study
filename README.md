@@ -1,50 +1,37 @@
-# FEDC4-Nextjs-Toyproject-Study
-<br>
-<h3>📆 기간 </h3>
-<br>
-2023.6.13 ~ 2023.7.31?
+# 🙏 고해성사
+데브코스 수강생 전용 반성문 플랫폼
 
+## 기간
+2023.6.13 ~
 
-<br>
-<br>
+## 사용 기술
+![TypeScript](https://img.shields.io/static/v1?style=for-the-badge&message=TypeScript&color=4976C1&logo=TypeScript&logoColor=FFFFFF&label=)
+![React](https://img.shields.io/static/v1?style=for-the-badge&message=React&color=61DAFB&logo=React&logoColor=FFFFFF&label=)
+![React Query](https://img.shields.io/static/v1?style=for-the-badge&message=React+Query&color=FF4154&logo=React+Query&logoColor=FFFFFF&label=)
+![Redux](https://img.shields.io/static/v1?style=for-the-badge&message=Redux&color=764ABC&logo=Redux&logoColor=FFFFFF&label=)
+![Tailwind CSS](https://img.shields.io/static/v1?style=for-the-badge&message=Tailwind+CSS&color=06B6D4&logo=Tailwind-CSS&logoColor=FFFFFF&label=)
 
-<h3>🏃 진행 방식</h3>
-<br>
-매주 금요일 14시
-<br>
-<br>
-스터디룸1 ~ 스터디룸3 순으로 비어있는 방 입장
-
-<br>
-<br>
-
-
-<h3>🥅 목표</h3>
-<br>
-MVP (Minimum Vaible Product)
-
-<br>
-<br>
-
-
-<h3>💻 구현 담당</h3>
-<br>
-메인페이지 : 김주하, 남궁호수
-<br>
-<br>
-<<<<<<< HEAD
-포스트 페이지 : 
-<br>
-<br>
-로그인 페이지: 이승희
-=======
-포스트 작성 : 김희석
->>>>>>> 8aa2b70738b45818b0250baa423793ac09a7a604
-<br>
-<br>
-모달 (댓글) : 이범진
-<br>
-<br>
-회원가입 : 이승희
-
-
+## 팀 소개
+<table>
+    <tr>
+        <th align="center">FE</th>
+        <th align="center">FE / BE</th>
+        <th align="center">FE</th>
+        <th align="center">FE</th>
+        <th align="center">FE / Design</th>
+    </tr>
+    <tr>
+        <td align="center"><a href="https://github.com/hayamaster"><img src="https://avatars.githubusercontent.com/hayamaster" width="130px;" alt=""></a></td>
+        <td align="center"><a href="https://github.com/HeeSeok-kim"><img src="https://avatars.githubusercontent.com/HeeSeok-kim" width="130px;" alt=""></a></td>
+        <td align="center"><a href="https://github.com/from1to2"><img src="https://avatars.githubusercontent.com/from1to2" width="130px;" alt=""></a></td>
+        <td align="center"><a href="https://github.com/euan-lee"><img src="https://avatars.githubusercontent.com/euan-lee" width="130px;" alt=""></a></td>
+        <td align="center"><a href="https://github.com/eeseung"><img src="https://avatars.githubusercontent.com/eeseung" width="130px;" alt=""></a></td>
+    </tr>
+    <tr>
+        <td align="center"><a href="https://github.com/hayamaster"><b>김주하</b></a></td>
+        <td align="center"><a href="https://github.com/HeeSeok-kim"><b>김희석</b></a></td>
+        <td align="center"><a href="https://github.com/from1to2"><b>남궁호수</b></a></td>
+        <td align="center"><a href="https://github.com/euan-lee"><b>이범진</b></a></td>
+        <td align="center"><a href="https://github.com/eeseung"><b>이승희</b></a></td>
+    </tr>
+</table>

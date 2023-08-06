@@ -57,7 +57,7 @@ const Header = () => {
                   />
                 </button>
                 {isModalOpen && (
-                  <div className='absolute top-20 left-1/2 -translate-x-1/2 flex flex-col justify-between items-center w-36 h-32 px-5 py-6 border bg-blue-gray-10 shadow-md '>
+                  <div className='absolute top-20 left-1/2 -translate-x-1/2 flex flex-col justify-between items-center w-36 h-32 px-5 py-6 border bg-blue-gray-10 shadow-md z-10'>
                     <div className='text-heading-4'>{auth.user.name} 님</div>
                     <SmallButton text={'로그아웃'} onClick={handleLogout} />
                   </div>
