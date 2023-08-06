@@ -35,7 +35,7 @@
   .text-heading-1 {
     @apply font-dgm;
     font-size: 32px;
-    line-height: 46px;
+    line-height: 40px;
   }
 
   .text-heading-2 {

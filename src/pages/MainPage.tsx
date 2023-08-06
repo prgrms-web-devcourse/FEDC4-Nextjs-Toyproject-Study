@@ -17,7 +17,6 @@ const MainPage: React.FC = () => {
 
   return (
     <div>
-      <Header />
       <PostContainer handleModalClick={clickModal} />
       {
         <Modal
