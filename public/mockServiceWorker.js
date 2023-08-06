@@ -2,7 +2,7 @@
 /* tslint:disable */
 
 /**
- * Mock Service Worker (1.2.2).
+ * Mock Service Worker (1.2.3).
  * @see https://github.com/mswjs/msw
  * - Please do NOT modify this file.
  * - Please do NOT serve this file on production.
@@ -167,7 +167,7 @@ async function handleRequest(event, requestId) {
   return response
 }
 
-// Resolve the mainpage client for the given event.
+// Resolve the main client for the given event.
 // Client that issues a request doesn't necessarily equal the client
 // that registered the worker. It's with the latter the worker should
 // communicate with during the response resolving phase.
