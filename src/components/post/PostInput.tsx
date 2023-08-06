@@ -7,7 +7,7 @@ import icon_06 from 'assets/img/icon_06.svg';
 import icon_07 from 'assets/img/icon_07.svg';
 import IconButton from '../../components/post/IconButton';
 import ColorPicker from '../../components/post/ColorPicker';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Input } from 'components/common/Input';
 import { SmallButton } from 'components/common/Button';
 import { useMutation } from 'react-query';
@@ -75,6 +75,26 @@ const PostInput = () => {
     mutation.mutate(newState);
   };
   const [state, setState] = useState(initialState);
+  const handleContentChange = useCallback((value: string) => {
+    if (value.length > 365) {
+      alert('텍스트는 최대 365자 입력 가능합니다.');
+    } else {
+      setState((prevState) => ({
+        ...prevState,
+        content: value,
+      }));
+    }
+  }, []);
+  const handleTitleChange = useCallback((value: string) => {
+    if (value.length > 15) {
+      alert('텍스트는 최대 15자 입력 가능합니다.');
+    } else {
+      setState((prevState) => ({
+        ...prevState,
+        title: value,
+      }));
+    }
+  }, []);
 
   return (
     <div
@@ -92,10 +112,7 @@ const PostInput = () => {
             placeHolder={'제목을 입력해 주세요'}
             disabled={false}
             onChange={(e) => {
-              setState((prevState) => ({
-                ...prevState,
-                title: e.target.value,
-              }));
+              handleTitleChange(e.target.value);
             }}
           />
         </div>
@@ -105,11 +122,9 @@ const PostInput = () => {
           <textarea
             className={`w-full h-full pl-1 pt-1 focus:outline-none resize-none`}
             placeholder={'반성문 내용을 입력해주세요.'}
+            value={state.content}
             onChange={(e) => {
-              setState((prevState) => ({
-                ...prevState,
-                content: e.target.value,
-              }));
+              handleContentChange(e.target.value);
             }}
           />
         </div>
