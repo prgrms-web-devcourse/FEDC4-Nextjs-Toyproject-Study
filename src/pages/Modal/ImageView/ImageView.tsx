@@ -1,11 +1,10 @@
-import { FC, useEffect } from 'react';
-import icon_01 from 'assets/img/icon_01.svg';
-
 const ImageView = ({ postData }) => {
-  let template;
   const { title, content, updatedAt, user, templateType } = postData;
-  templateType ? (template = JSON.parse(templateType)) : '';
+  const template = templateType
+    ? JSON.parse(templateType.replace(/'/g, '"'))
+    : {};
   const date = new Date(postData.updateAt);
+
   return (
     <div
       className={`mx-3 w-1/2 border border-solid border-blue-gray-800 h-[688px] flex-col justify-center items-center`}
