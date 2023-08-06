@@ -1,0 +1,9 @@
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="share">
+<path id="Path 2" d="M24 12L12 16.5" stroke="#2D4053" stroke-linecap="round"/>
+<path id="Path 2_2" d="M24 24L12 19.5" stroke="#2D4053" stroke-linecap="round"/>
+<path id="Oval" fill-rule="evenodd" clip-rule="evenodd" d="M9 21C10.6569 21 12 19.6569 12 18C12 16.3431 10.6569 15 9 15C7.34315 15 6 16.3431 6 18C6 19.6569 7.34315 21 9 21Z" stroke="#2D4053"/>
+<path id="Oval_2" fill-rule="evenodd" clip-rule="evenodd" d="M27 13.5C28.6569 13.5 30 12.1569 30 10.5C30 8.84315 28.6569 7.5 27 7.5C25.3431 7.5 24 8.84315 24 10.5C24 12.1569 25.3431 13.5 27 13.5Z" stroke="#2D4053"/>
+<path id="Oval_3" fill-rule="evenodd" clip-rule="evenodd" d="M27 28.5C28.6569 28.5 30 27.1569 30 25.5C30 23.8431 28.6569 22.5 27 22.5C25.3431 22.5 24 23.8431 24 25.5C24 27.1569 25.3431 28.5 27 28.5Z" stroke="#2D4053"/>
+</g>
+</svg>
