@@ -1,16 +1,12 @@
 import { Input } from 'components/common/Input';
-import { FC, useCallback, useEffect, useState } from 'react';
-import Top from '../Top/Top';
-import { SmallButton } from '../../../components/common/Button';
+import { useCallback, useState } from 'react';
 import { createComment } from 'api/comment';
 import { useMutation } from 'react-query';
-import { Button } from 'react-query/types/devtools/styledComponents';
 import share from 'assets/img/share.svg';
 import heart from 'assets/img/heart.svg';
 import heartFill from 'assets/img/heart-fill.svg';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
-import { useLocation } from 'react-router-dom';
 import { likeToggle } from '../../../api/postApi';
 
 const Comment = ({ postId, comment, addComment, isLike, clickLike }) => {
@@ -94,13 +90,14 @@ const Comment = ({ postId, comment, addComment, isLike, clickLike }) => {
       </div>
       <div className={`w-full h-[580px] overflow-y-scroll`}>
         {comment?.map((comment, index) => (
-          <div className='flex flex-col p-2 m-3 bg-blue-gray-50 ' key={index}>
-            <span className={`text-left font-bold text-heading-5`}>
+          <div
+            className='flex flex-col m-3 px-4 py-2 bg-blue-gray-50 '
+            key={index}
+          >
+            <span className={`text-left font-bold text-subtitle-1`}>
               {comment.user.name}
             </span>
-            <span className={`text-left text-heading-5`}>
-              {comment.comment}
-            </span>
+            <span className={`text-left text-body-2`}>{comment.comment}</span>
           </div>
         ))}
       </div>
