@@ -2,15 +2,14 @@ import React, { FC, useState, useEffect } from 'react';
 import ImageView from './ImageView/ImageView';
 import Comment from './Comment/Comments';
 import { getPostDetail } from 'api/postApi';
-import { PostData } from 'interface/comment';
 import { postModalType, PostType } from 'interface/post';
-import { response } from 'express';
 
 interface ModalProps {
   postId: number;
+  modalFlag: boolean;
 }
 
-const Modal: FC<ModalProps> = (postId) => {
+const Modal: FC<ModalProps> = ({ postId, modalFlag }) => {
   const initialState = {
     isLoading: false,
     errorMessage: '',
@@ -39,31 +38,35 @@ const Modal: FC<ModalProps> = (postId) => {
   }
 
   return (
-    <div>
-      <div className='flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-1 outline-none focus:outline-none'>
-        <div className='relative w-auto my-6 mx-auto max-w-3xl'>
-          <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
-            <div className='flex flex-row items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b'>
-              {state.postData && (
-                <>
-                  <ImageView postData={state.postData} />
-                  <Comment
-                    comment={state.postData.comment}
-                    addComment={(newComment) => {
-                      const updatedState = { ...state };
-                      if (updatedState.postData.comment) {
-                        updatedState.postData.comment = [
-                          ...updatedState.postData.comment,
-                          newComment,
-                        ];
-                      }
-                      setState(updatedState);
-                    }}
-                  />
-                </>
-              )}
-            </div>
-          </div>
+    <div
+      className={`absolute left-0 top-0 w-full h-full bg-[rgba(0,0,0,0.5)] ${
+        modalFlag ? 'hidden' : ''
+      }`}
+    >
+      <div
+        className={`absolute left-1/2 top-1/2 text-center z-10 translate-y-[-50%] translate-x-[-50%]`}
+      >
+        <div
+          className={`bg-blue-gray-10 w-[1080px] h-[720px] flex flex-row border border-solid border-blue-gray-800 justify-center items-center`}
+        >
+          {state.postData && (
+            <>
+              <ImageView postData={state.postData} />
+              <Comment
+                comment={state.postData.comment}
+                addComment={(newComment) => {
+                  const updatedState = { ...state };
+                  if (updatedState.postData.comment) {
+                    updatedState.postData.comment = [
+                      ...updatedState.postData.comment,
+                      newComment,
+                    ];
+                  }
+                  setState(updatedState);
+                }}
+              />
+            </>
+          )}
         </div>
       </div>
     </div>

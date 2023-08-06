@@ -1,27 +1,20 @@
+import React, { useState } from 'react';
 import PostContainer from './PostContainer';
 import Header from './Header';
 import Modal from 'pages/Modal/Modal';
-import React, { useState } from 'react';
+
 const MainPage: React.FC = () => {
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const handleModalToggle = () => {
-    setShowModal((showModal) => !showModal);
+  const [showModal, setShowModal] = useState<boolean>(true);
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
   };
-  const handleClick = (e) => {
-    e.stopPropagation();
-    alert('Wrapper got clicked!!');
-  };
+
   return (
     <div>
-      {showModal ? (
-        <div>
-          <Modal postId={59} />
-        </div>
-      ) : null}
-      <div onClick={handleClick}>
-        <Header />
-        <PostContainer handleModalToggle={handleModalToggle} />
-      </div>
+      <Header />
+      <PostContainer handleModalToggle={toggleModal} />
+      {<Modal postId={59} modalFlag={showModal} />}
     </div>
   );
 };
