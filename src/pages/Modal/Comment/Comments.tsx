@@ -9,7 +9,14 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import { likeToggle } from '../../../api/postApi';
 
-const Comment = ({ postId, comment, addComment, isLike, clickLike }) => {
+const Comment = ({
+  likeCount,
+  postId,
+  comment,
+  addComment,
+  isLike,
+  clickLike,
+}) => {
   const [commentValue, setCommentValue] = useState('');
   const auth = useSelector((state: RootState) => state.auth);
   const initialState = {
@@ -69,10 +76,12 @@ const Comment = ({ postId, comment, addComment, isLike, clickLike }) => {
       <div
         className={`h-[56px] w-full flex flex-row justify-between items-center px-2 border-b border-solid border-blue-gray-800`}
       >
+        <span className={`text-subtitle-1`}>좋아요 {likeCount}개</span>
         <img
           className={`w-[36px] h-[36px] justify-center items-center cursor-pointer invisible`}
           src={share}
         />
+
         <img
           className={`w-[32px] h-[32px] cursor-pointer justify-end`}
           src={isLike ? heartFill : heart}
