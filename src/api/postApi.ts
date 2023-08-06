@@ -5,8 +5,15 @@ export const createPost = async (state) => {
   return response.data;
 };
 
-export const getPost = async ({ pageId }) => {
-  const response = await request.get(`/posts?page=${pageId}`);
+interface GetPost {
+  pageId: number;
+  limitNumber: number;
+}
+
+export const getPost = async ({ pageId = 1, limitNumber = 9 }: GetPost) => {
+  const response = await request.get(
+    `/posts?page=${pageId}&limit=${limitNumber}`,
+  );
   return response.data;
 };
 
@@ -15,7 +22,7 @@ export const getPostDetail = async ({ postId }) => {
   return response.data;
 };
 
-export const likePost = async ({ postId }) => {
+export const likeToggle = async ({ postId }) => {
   const response = await request.put(`/posts/${postId}/likes`);
   return response.data;
 };
