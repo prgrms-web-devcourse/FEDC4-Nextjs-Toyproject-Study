@@ -18,12 +18,11 @@ export const getPost = async ({ pageId = 1, limitNumber = 9 }: GetPost) => {
 };
 
 export const getPostDetail = async ({ postId }) => {
-  console.log('.env', process.env.REACT_APP_API);
   const response = await request.get(`/posts/${postId}`);
   return response.data;
 };
 
-export const likePost = async ({ postId }) => {
+export const likeToggle = async ({ postId }) => {
   const response = await request.put(`/posts/${postId}/likes`);
   return response.data;
 };

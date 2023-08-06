@@ -6,7 +6,7 @@ interface Input {
   value: string;
   readonly placeHolder: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onKeyDown?;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   disabled: boolean;
 }
 
@@ -16,6 +16,7 @@ export const Input = ({
   value,
   placeHolder,
   onChange,
+  onKeyDown,
   disabled,
 }: Input) => {
   return (
@@ -24,7 +25,7 @@ export const Input = ({
       type={type}
       value={value}
       placeholder={placeHolder}
-      onKeyDown={(e) => onKeyDown(e)}
+      onKeyDown={onKeyDown}
       onChange={onChange}
       className='w-full px-5 py-2.5 focus:outline-none border border-solid border-blue-gray-200 hover:border-blue-gray-400 focus:border-blue-gray-999 text-body-2 placeholder:text-blue-gray-200'
       disabled={disabled}

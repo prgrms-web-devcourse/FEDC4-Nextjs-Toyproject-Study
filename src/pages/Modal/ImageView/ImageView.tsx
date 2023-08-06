@@ -1,8 +1,6 @@
 import { FC, useEffect } from 'react';
-import { Post } from 'interface';
 import icon_01 from 'assets/img/icon_01.svg';
 
-console.log(icon_01);
 const ImageView = ({ postData }) => {
   let template;
   const { title, content, updatedAt, user, templateType } = postData;
@@ -10,7 +8,7 @@ const ImageView = ({ postData }) => {
   const date = new Date(postData.updateAt);
   return (
     <div
-      className={`mx-3 w-[478px] h-[688px] flex-col justify-center items-center`}
+      className={`mx-3 w-1/2 border border-solid border-blue-gray-800 h-[688px] flex-col justify-center items-center`}
       style={{ backgroundColor: template?.color }}
     >
       <div className={`p-12`}>

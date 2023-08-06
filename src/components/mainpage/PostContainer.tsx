@@ -2,8 +2,11 @@ import Post from './Post';
 import { useEffect, useRef, useState } from 'react';
 import { getPost } from 'api/postApi';
 import { PostType } from 'interface/index';
+interface PostContainerProps {
+  handleModalClick: (postId) => void;
+}
 
-const PostContainer: React.FC = () => {
+const PostContainer: React.FC<PostContainerProps> = ({ handleModalClick }) => {
   const limit = 12;
   const endRef = useRef<HTMLDivElement>(null);
   const [start, setStart] = useState<number>(1);
@@ -43,7 +46,12 @@ const PostContainer: React.FC = () => {
       <div className='container flex flex-wrap py-14'>
         {datas ? (
           datas.map((post, idx) => (
-            <div className='p-3 h-96' id={String(idx)} key={post.postId}>
+            <div
+              className='p-3 h-96'
+              id={String(idx)}
+              key={post.postId}
+              onClick={() => handleModalClick(post)}
+            >
               <Post post={post} />
             </div>
           ))

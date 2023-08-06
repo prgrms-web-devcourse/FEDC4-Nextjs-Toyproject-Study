@@ -4,17 +4,32 @@ import Header from 'components/mainpage/Header';
 import Modal from 'pages/Modal/Modal';
 
 const MainPage: React.FC = () => {
-  const [showModal, setShowModal] = useState<boolean>(true);
+  const initialState = {
+    postId: null,
+    showModal: true,
+  };
+  const [state, setState] = useState(initialState);
 
-  const toggleModal = () => {
-    setShowModal(!showModal);
+  const clickModal = ({ postId }) => {
+    setState({ postId: postId, showModal: !state.showModal });
+    document.body.style.overflow = 'hidden';
   };
 
   return (
     <div>
       <Header />
-      <PostContainer handleModalToggle={toggleModal} />
-      {<Modal postId={59} modalFlag={showModal} />}
+      <PostContainer handleModalClick={clickModal} />
+      {
+        <Modal
+          modalOption={state}
+          closeModal={(event) => {
+            if (event.target.id === 'background') {
+              setState({ ...state, showModal: true });
+              document.body.style.overflow = 'unset';
+            }
+          }}
+        />
+      }
     </div>
   );
 };

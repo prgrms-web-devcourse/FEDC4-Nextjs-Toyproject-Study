@@ -18,7 +18,6 @@ const Header = () => {
 
   const modalHandler = () => {
     setModalOpened((prev) => !prev);
-    console.log(modalOpened, 'clicked');
 
     const modal = document.querySelector('#modal') as HTMLElement;
     if (modalOpened) {

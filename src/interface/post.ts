@@ -24,6 +24,7 @@ interface PostData {
   isAnonymous?: string;
   likeCount?: string;
   team?: string;
+  isLike?: boolean;
   templateType?: {
     color: string;
     icon: string;
