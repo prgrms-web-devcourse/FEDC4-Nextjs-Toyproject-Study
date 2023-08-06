@@ -85,6 +85,16 @@ const PostInput = () => {
       }));
     }
   }, []);
+  const handleTitleChange = useCallback((value: string) => {
+    if (value.length > 15) {
+      alert('텍스트는 최대 15자 입력 가능합니다.');
+    } else {
+      setState((prevState) => ({
+        ...prevState,
+        title: value,
+      }));
+    }
+  }, []);
 
   return (
     <div
@@ -102,10 +112,7 @@ const PostInput = () => {
             placeHolder={'제목을 입력해 주세요'}
             disabled={false}
             onChange={(e) => {
-              setState((prevState) => ({
-                ...prevState,
-                title: e.target.value,
-              }));
+              handleTitleChange(e.target.value);
             }}
           />
         </div>
