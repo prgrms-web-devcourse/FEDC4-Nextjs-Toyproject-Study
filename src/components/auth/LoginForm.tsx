@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { signIn } from '../../api/auth';
 import { AppDispatch } from '../../store';
 import { login } from '../../store/auth';
-
 import AuthInput from './AuthInput';
 import { LargeButton, SmallButton } from '../common/Button';
 

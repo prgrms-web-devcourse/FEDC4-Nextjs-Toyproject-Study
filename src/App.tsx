@@ -1,10 +1,10 @@
 import Routes from 'routes/Routes';
-import TempHeader from './components/common/TempHeader';
+import Header from './components/common/Header';
 
 function App() {
   return (
     <div className='App'>
-      <TempHeader />
+      <Header />
       <Routes />
     </div>
   );
