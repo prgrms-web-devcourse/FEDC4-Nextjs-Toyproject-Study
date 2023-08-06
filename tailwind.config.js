@@ -49,7 +49,7 @@ export default {
       boxShadow: {
         'card-1': '10px 10px 0 0 #142029',
         'card-2': '4px 4px 0 0 #142029',
-        button: '2px 2px 0 0 #202B3D',
+        'button-1': '2px 2px 0 0 #202B3D',
       },
     },
   },

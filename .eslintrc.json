@@ -20,8 +20,10 @@
     "react/react-in-jsx-scope": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
-    "prettier/prettier": ["error", { "singleQuote": true,
-    "parser": "flow" }],
+    "prettier/prettier": [
+      "error",
+      { "singleQuote": true, "endOfLine": "auto" }
+    ],
     "react/prop-types": "off"
   }
 }

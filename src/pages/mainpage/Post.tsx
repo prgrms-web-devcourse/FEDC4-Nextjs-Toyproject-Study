@@ -1,10 +1,7 @@
 import { PostType, Color } from 'interface/post';
-import React, { useState } from 'react';
-import Modal from 'pages/Modal/Modal';
 
 interface PostProps {
   post: PostType;
-  handleModalToggle: () => void;
 }
 
 const backgroundColors: Color = {
@@ -14,17 +11,12 @@ const backgroundColors: Color = {
   3: 'bg-green-200',
 };
 
-const Post: React.FC<PostProps> = ({ post, handleModalToggle }) => {
-  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    handleModalToggle();
-  };
-
+const Post: React.FC<PostProps> = ({ post }) => {
   return (
     <div
       className={`${
         backgroundColors[post.id % 4]
       } shadow-md h-80 w-64 rounded p-5 m-auto`}
-      onClick={handleModalToggle}
     >
       <h2 className='text-x1 font-bold mb-5 text-center'>{post.title}</h2>
       <p className='mb-10 h-36'>{post.content}</p>
