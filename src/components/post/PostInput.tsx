@@ -1,10 +1,10 @@
-import icon_01 from 'assets/img/icon_01.svg';
-import icon_02 from 'assets/img/icon_02.svg';
-import icon_03 from 'assets/img/icon_03.svg';
-import icon_04 from 'assets/img/icon_04.svg';
-import icon_05 from 'assets/img/icon_05.svg';
-import icon_06 from 'assets/img/icon_06.svg';
-import icon_07 from 'assets/img/icon_07.svg';
+import icon_01 from '../../assets/img/icon_01.png';
+import icon_02 from '../../assets/img/icon_02.png';
+import icon_03 from '../../assets/img/icon_03.png';
+import icon_04 from '../../assets/img/icon_04.png';
+import icon_05 from '../../assets/img/icon_05.png';
+import icon_06 from '../../assets/img/icon_06.png';
+import icon_07 from '../../assets/img/icon_07.png';
 import IconButton from '../../components/post/IconButton';
 import ColorPicker from '../../components/post/ColorPicker';
 import { useState } from 'react';
