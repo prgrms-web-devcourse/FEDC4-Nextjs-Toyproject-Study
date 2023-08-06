@@ -1,21 +1,30 @@
 import Post from './Post';
-import { DUMMY_DATA } from './DummyData';
 import { useEffect, useRef, useState } from 'react';
+import { getPost } from 'api/postApi';
+import { PostType } from 'interface/index';
 
 const PostContainer: React.FC = () => {
-  const totalCount = DUMMY_DATA.length;
-  const start = 0;
   const limit = 12;
   const endRef = useRef<HTMLDivElement>(null);
-  const [end, setEnd] = useState<number>(limit);
+  const [start, setStart] = useState<number>(1);
+  const [datas, setDatas] = useState<PostType[]>([]);
 
-  const showData = DUMMY_DATA.slice(start, end);
+  const fetchData = async () => {
+    try {
+      const response = await getPost({ pageId: start, limitNumber: limit });
+      setDatas([...datas, ...response.data]);
+      setStart(start + 1);
+    } catch (error) {
+      alert(error);
+      console.error('Error fetching data.');
+    }
+  };
 
   const handleInfiniteScroll = (entries, observer) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting && showData.length < totalCount) {
+      if (entry.isIntersecting && datas.length % limit === 0) {
         observer.unobserve(entry.target);
-        setEnd(end + limit > totalCount ? totalCount : end + limit);
+        fetchData();
       }
     });
   };
@@ -32,13 +41,17 @@ const PostContainer: React.FC = () => {
   return (
     <div className='flex flex-col pl-[18%] pr-[16%] justify-center items-center w-full bg-blue-gray-25'>
       <div className='container flex flex-wrap py-14'>
-        {showData.map((post, idx) => (
-          <div className='p-3 h-96' id={String(idx)} key={post.id}>
-            <Post post={post} />
-          </div>
-        ))}
+        {datas ? (
+          datas.map((post, idx) => (
+            <div className='p-3 h-96' id={String(idx)} key={post.postId}>
+              <Post post={post} />
+            </div>
+          ))
+        ) : (
+          <div></div>
+        )}
       </div>
-      <div id={String(end)} ref={endRef} />
+      <div ref={endRef} />
     </div>
   );
 };
