@@ -25,12 +25,20 @@ const PostContainer: React.FC<PostContainerProps> = ({ handleModalClick }) => {
 
   const handleInfiniteScroll = (entries, observer) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting && datas.length % limit === 0) {
+      if (
+        entry.isIntersecting &&
+        datas.length % limit === 0 &&
+        datas.length > 0
+      ) {
         observer.unobserve(entry.target);
         fetchData();
       }
     });
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   useEffect(() => {
     if (!endRef.current) return;
