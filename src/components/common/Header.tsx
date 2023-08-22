@@ -93,7 +93,7 @@ const Header = () => {
           </Link>
           <div className=''>
             {auth.isLogin ? (
-              <div className='flex pb-6 justify-around'>
+              <div className='flex items-center mt-2 pb-6 justify-evenly'>
                 {location.pathname === '/' && (
                   <LargeButton
                     text={'반성문 쓰기'}
@@ -103,6 +103,7 @@ const Header = () => {
                 <button onClick={handleModal}>
                   <div className=''>
                     <div>
+                      <span className='inline-block w-5 h-11 align-middle'></span>
                       <img
                         className='relative inline-block'
                         src={user_profile}
@@ -110,6 +111,7 @@ const Header = () => {
                         width={42}
                         height={42}
                       />
+                      <span className='inline-block w-5 h-11 align-middle'></span>
                     </div>
                   </div>
                 </button>
