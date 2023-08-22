@@ -11,7 +11,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
 
   return (
     <div
-      className='relative shadow-card-2 p-5 m-auto w-[268px] h-[386px] cursor-pointer'
+      className='relative  p-5 m-auto w-[268px] h-[386px] cursor-pointer hover:shadow-[4px_4px_0px_0px_rgba(20,32,41,1)] hover:scale-105'
       style={{ backgroundColor: template?.color }}
     >
       <div className='text-heading-3 line-clamp-[1] overflow-hidden mb-5 text-center'>
