@@ -63,6 +63,8 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
                 likeCount={state.postData.likeCount}
                 postId={state.postData.postId}
                 isLike={state.postData.isLike}
+                isForgive={state.postData.isForgive}
+                forgiveCount={state.postData.forgiveCount}
                 comment={state.postData.comment}
                 addComment={(newComment) => {
                   const updatedState = { ...state };
@@ -88,6 +90,11 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
                       updatedState.postData.likeCount -= 1;
                     }
                   }
+                  setState(updatedState);
+                }}
+                clickForgive={(isForgive) => {
+                  const updatedState = { ...state };
+                  updatedState.postData.isForgive = isForgive;
                   setState(updatedState);
                 }}
               />

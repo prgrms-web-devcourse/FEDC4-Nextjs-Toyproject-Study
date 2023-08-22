@@ -7,7 +7,7 @@ import heart from 'assets/img/heart.svg';
 import heartFill from 'assets/img/heart-fill.svg';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
-import { likeToggle } from '../../../api/postApi';
+import { likeToggle, forgive } from '../../../api/postApi';
 import { SmallButton } from 'components/common/Button';
 import App from '../../../App';
 
@@ -17,9 +17,12 @@ const Comment = ({
   comment,
   addComment,
   isLike,
+  isForgive,
+  forgiveCount,
   clickLike,
+  clickForgive,
 }) => {
-  const [commentValue, setCommentValue] = useState('');
+  const [commentValue, setCommentValue] = useState(isForgive);
   const auth = useSelector((state: RootState) => state.auth);
   const initialState = {
     isLogin: auth.isLogin,
@@ -38,6 +41,12 @@ const Comment = ({
   const clickLime = useMutation(likeToggle, {
     onSuccess: (data) => {
       alert(data.message);
+    },
+  });
+
+  const clickForgiveBtn = useMutation(forgive, {
+    onSuccess: (data) => {
+      alert('용서하였습니다.');
     },
   });
 
@@ -71,6 +80,7 @@ const Comment = ({
     commentValue,
   ]);
 
+  console.log(forgiveCount);
   return (
     <div
       className={`flex flex-col w-1/2 h-[720px] items-start justify-between border-l border-solid border-blue-gray-800 rounded-t`}
@@ -94,11 +104,27 @@ const Comment = ({
                 });
                 clickLike(!isLike);
               } else {
-                alert('좋아요는 로그인시 사용 가능합니다.');
+                alert('"좋아요"는 로그인시 사용 가능합니다.');
               }
             }}
           />
-          <SmallButton text='용서하기' />
+          {isForgive ? (
+            <SmallButton text='용서됨' />
+          ) : (
+            <SmallButton
+              text='용서하기'
+              onClick={() => {
+                if (state.isLogin) {
+                  clickForgiveBtn.mutate({
+                    postId: postId,
+                  });
+                  clickForgive(true);
+                } else {
+                  alert('"용서하기"는 로그인시 사용 가능합니다.');
+                }
+              }}
+            />
+          )}
         </div>
       </div>
       <div className={`w-full h-[580px] overflow-y-scroll`}>

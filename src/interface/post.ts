@@ -29,6 +29,8 @@ interface PostData {
   createAt?: string;
   updateAt?: string;
   isLike?: boolean;
+  isForgive?: boolean;
+  forgiveCount?: number;
   user?: {
     name: string;
     nickName: string;
