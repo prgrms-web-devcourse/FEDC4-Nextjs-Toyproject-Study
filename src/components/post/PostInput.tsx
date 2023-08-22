@@ -14,7 +14,11 @@ import { useMutation } from 'react-query';
 import { createPost } from 'api/postApi';
 import { useNavigate } from 'react-router-dom';
 
-const PostInput = () => {
+type PostInputProps = {
+  width?: string;
+};
+
+const PostInput = ({ width }: PostInputProps) => {
   const navigate = useNavigate();
   const imgArr = [
     null,
@@ -98,10 +102,10 @@ const PostInput = () => {
 
   return (
     <div
-      className={`flex flex-col justify-center pb-12 px-20 justify-center items-center w-full`}
+      className={`flex flex-col justify-center pb-12  w-full justify-center items-center `}
     >
       <div
-        className={`flex flex-col justify-center items-center w-1/2  border border-solid border-blue-gray-880 shadow-card-1 `}
+        className={`flex flex-col justify-center items-center ${width} border border-solid border-blue-gray-880 shadow-card-1 `}
       >
         <div
           className={`text-left flex items-center justify-center w-11/12 h-10 my-5`}
@@ -154,7 +158,7 @@ const PostInput = () => {
           })}
         </div>
         <div className={`flex w-11/12 py-5 justify-start items-center`}>
-          <span className={`font-dgm`}>아이콘</span>
+          <span className={`font-dgm whitespace-nowrap`}>아이콘</span>
           {imgArr.map((src, index) => {
             const selected = state.templateType.icon;
             return (
