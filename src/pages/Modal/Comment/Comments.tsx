@@ -80,7 +80,6 @@ const Comment = ({
     commentValue,
   ]);
 
-  console.log(forgiveCount);
   return (
     <div
       className={`flex flex-col w-1/2 h-[720px] items-start justify-between border-l border-solid border-blue-gray-800 rounded-t`}
@@ -118,7 +117,7 @@ const Comment = ({
                   clickForgiveBtn.mutate({
                     postId: postId,
                   });
-                  clickForgive(true);
+                  clickForgive(true, forgiveCount + 1);
                 } else {
                   alert('"용서하기"는 로그인시 사용 가능합니다.');
                 }

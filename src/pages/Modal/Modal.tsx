@@ -92,9 +92,10 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
                   }
                   setState(updatedState);
                 }}
-                clickForgive={(isForgive) => {
+                clickForgive={(isForgive, forgiveCount) => {
                   const updatedState = { ...state };
                   updatedState.postData.isForgive = isForgive;
+                  updatedState.postData.forgiveCount = forgiveCount;
                   setState(updatedState);
                 }}
               />

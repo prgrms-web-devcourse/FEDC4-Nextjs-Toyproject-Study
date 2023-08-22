@@ -91,7 +91,13 @@ const Post: React.FC<PostProps> = ({ post }) => {
         <span className='text-heading-6 text-right'>
           {post.createAt?.slice(0, 10).split('-').join('.')}
         </span>
-        <span className='text-heading-4 text-right'>{post.user.name}</span>
+        {post.forgiveCount >= 5 ? (
+          <span className='text-heading-4 text-right'>
+            {post.user.nickName}
+          </span>
+        ) : (
+          <span className='text-heading-4 text-right'>{post.user.name}</span>
+        )}
       </div>
       {template.icon && (
         <img
