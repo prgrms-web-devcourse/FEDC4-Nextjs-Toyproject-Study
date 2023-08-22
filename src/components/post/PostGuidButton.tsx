@@ -33,7 +33,7 @@ const PostGuidButton = ({ width }: PostGuidButtonProps) => {
       </button>
       <div
         id='postGuidText'
-        className={`flex flex-col justify-center w-1/2 pl-2 border-x border-b border-solid border-[#2D4053] bg-white pb-2 ${
+        className={`flex flex-col justify-center ${width} pl-2 border-x border-b border-solid border-[#2D4053] bg-white pb-2 ${
           guidFlag ? '' : 'hidden'
         }`}
       >

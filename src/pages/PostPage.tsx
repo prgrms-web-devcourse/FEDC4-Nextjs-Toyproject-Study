@@ -29,7 +29,6 @@ const PostPage = () => {
       )}
       {isMobile && (
         <div className={`flex flex-col`}>
-          From now on, this is mobile version.
           <PostGuidButton width='w-11/12' />
           <PostInput width='w-11/12' />
         </div>
