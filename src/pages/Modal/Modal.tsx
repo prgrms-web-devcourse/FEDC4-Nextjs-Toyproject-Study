@@ -3,6 +3,7 @@ import ImageView from './ImageView/ImageView';
 import Comment from './Comment/Comments';
 import { getPostDetail } from 'api/postApi';
 import { postModalType, PostType } from 'interface/post';
+import { useMediaQuery } from 'react-responsive';
 
 interface ModalProps {
   modalOption: {
@@ -42,60 +43,126 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
     return <div>Loading...</div>;
   }
 
+  const isPcOrTablet = useMediaQuery({
+    query: '(min-width:1115px)',
+  });
+  const isMobile = useMediaQuery({
+    query: '(max-width:1114px)',
+  });
+
   return (
-    <div
-      id={`background`}
-      className={`fixed left-0 top-0 w-screen h-screen z-[250] bg-[rgba(0,0,0,0.5)] ${
-        showModal ? 'hidden' : ''
-      }`}
-      onClick={closeModal}
-    >
-      <div
-        className={`absolute left-1/2 top-1/2 text-center z-10 translate-y-[-50%] translate-x-[-50%]`}
-      >
+    <>
+      {isPcOrTablet && (
         <div
-          className={`bg-blue-gray-10 w-[1080px] shadow-card-1 h-[720px] flex flex-row border border-solid border-blue-gray-800 justify-center items-center`}
+          id={`background`}
+          className={`fixed left-0 top-0 w-screen h-screen z-[250] bg-[rgba(0,0,0,0.5)] ${
+            showModal ? 'hidden' : ''
+          }`}
+          onClick={closeModal}
         >
-          {state.postData && (
-            <>
-              <ImageView postData={state.postData} />
-              <Comment
-                likeCount={state.postData.likeCount}
-                postId={state.postData.postId}
-                isLike={state.postData.isLike}
-                comment={state.postData.comment}
-                addComment={(newComment) => {
-                  const updatedState = { ...state };
-                  if (updatedState.postData.comment) {
-                    updatedState.postData.comment = [
-                      ...updatedState.postData.comment,
-                      newComment,
-                    ];
-                  }
-                  setState(updatedState);
-                }}
-                clickLike={(isLike) => {
-                  const updatedState = { ...state };
-                  updatedState.postData.isLike = isLike;
-                  if (updatedState.postData.isLike) {
-                    updatedState.postData.likeCount =
-                      (updatedState.postData.likeCount || 0) + 1;
-                  } else {
-                    if (
-                      updatedState.postData.likeCount &&
-                      updatedState.postData.likeCount !== 0
-                    ) {
-                      updatedState.postData.likeCount -= 1;
-                    }
-                  }
-                  setState(updatedState);
-                }}
-              />
-            </>
-          )}
+          <div
+            className={`absolute left-1/2 top-1/2 text-center z-10 translate-y-[-50%] translate-x-[-50%]`}
+          >
+            <div
+              className={`bg-blue-gray-10 w-[1080px] shadow-card-1 h-[720px] flex flex-row border border-solid border-blue-gray-800 justify-center items-center`}
+            >
+              {state.postData && (
+                <>
+                  <ImageView postData={state.postData} />
+                  <Comment
+                    likeCount={state.postData.likeCount}
+                    postId={state.postData.postId}
+                    isLike={state.postData.isLike}
+                    comment={state.postData.comment}
+                    addComment={(newComment) => {
+                      const updatedState = { ...state };
+                      if (updatedState.postData.comment) {
+                        updatedState.postData.comment = [
+                          ...updatedState.postData.comment,
+                          newComment,
+                        ];
+                      }
+                      setState(updatedState);
+                    }}
+                    clickLike={(isLike) => {
+                      const updatedState = { ...state };
+                      updatedState.postData.isLike = isLike;
+                      if (updatedState.postData.isLike) {
+                        updatedState.postData.likeCount =
+                          (updatedState.postData.likeCount || 0) + 1;
+                      } else {
+                        if (
+                          updatedState.postData.likeCount &&
+                          updatedState.postData.likeCount !== 0
+                        ) {
+                          updatedState.postData.likeCount -= 1;
+                        }
+                      }
+                      setState(updatedState);
+                    }}
+                  />
+                </>
+              )}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+      {isMobile && (
+        <div
+          id={`background`}
+          className={`fixed left-0 top-0 w-screen h-screen overflow-auto z-[250] bg-[rgba(0,0,0,0.5)] ${
+            showModal ? 'hidden' : ''
+          }`}
+          onClick={closeModal}
+        >
+          <div
+            className={`absolute left-1/2 top-1/2 w-7/12 h-5/6 text-center z-10 translate-y-[-50%] translate-x-[-50%]`}
+          >
+            <div
+              className={`flex flex-col bg-blue-gray-10 shadow-card-1 flex flex-row border border-solid border-blue-gray-800 justify-center items-center`}
+            >
+              {state.postData && (
+                <>
+                  <ImageView postData={state.postData} />
+                  <Comment
+                    likeCount={state.postData.likeCount}
+                    postId={state.postData.postId}
+                    isLike={state.postData.isLike}
+                    comment={state.postData.comment}
+                    addComment={(newComment) => {
+                      const updatedState = { ...state };
+                      if (updatedState.postData.comment) {
+                        updatedState.postData.comment = [
+                          ...updatedState.postData.comment,
+                          newComment,
+                        ];
+                      }
+                      setState(updatedState);
+                    }}
+                    clickLike={(isLike) => {
+                      const updatedState = { ...state };
+                      updatedState.postData.isLike = isLike;
+                      if (updatedState.postData.isLike) {
+                        updatedState.postData.likeCount =
+                          (updatedState.postData.likeCount || 0) + 1;
+                      } else {
+                        if (
+                          updatedState.postData.likeCount &&
+                          updatedState.postData.likeCount !== 0
+                        ) {
+                          updatedState.postData.likeCount -= 1;
+                        }
+                      }
+                      setState(updatedState);
+                    }}
+                  />
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
