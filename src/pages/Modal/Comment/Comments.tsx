@@ -109,7 +109,7 @@ const Comment = ({
             }}
           />
           {isForgive ? (
-            <SmallButton text='용서됨' />
+            <SmallButton text='용서됨' disabled={true} />
           ) : (
             <SmallButton
               text='용서하기'
