@@ -8,6 +8,8 @@ import heartFill from 'assets/img/heart-fill.svg';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import { likeToggle } from '../../../api/postApi';
+import { SmallButton } from 'components/common/Button';
+import App from '../../../App';
 
 const Comment = ({
   likeCount,
@@ -74,28 +76,30 @@ const Comment = ({
       className={`flex flex-col w-1/2 h-[720px] items-start justify-between border-l border-solid border-blue-gray-800 rounded-t`}
     >
       <div
-        className={`h-[56px] w-full flex flex-row justify-between items-center px-2 border-b border-solid border-blue-gray-800`}
+        className={`h-[56px] w-full flex flex-row justify-between items-center px-3 py-1.5 border-b border-solid border-blue-gray-800`}
       >
         <span className={`text-subtitle-1`}>좋아요 {likeCount}개</span>
         <img
           className={`w-[36px] h-[36px] justify-center items-center cursor-pointer invisible`}
           src={share}
         />
-
-        <img
-          className={`w-[32px] h-[32px] cursor-pointer justify-end`}
-          src={isLike ? heartFill : heart}
-          onClick={() => {
-            if (state.isLogin) {
-              clickLime.mutate({
-                postId: postId,
-              });
-              clickLike(!isLike);
-            } else {
-              alert('좋아요는 로그인시 사용 가능합니다.');
-            }
-          }}
-        />
+        <div className='flex flex-row gap-3'>
+          <img
+            className={`w-[32px] h-[32px] cursor-pointer justify-end`}
+            src={isLike ? heartFill : heart}
+            onClick={() => {
+              if (state.isLogin) {
+                clickLime.mutate({
+                  postId: postId,
+                });
+                clickLike(!isLike);
+              } else {
+                alert('좋아요는 로그인시 사용 가능합니다.');
+              }
+            }}
+          />
+          <SmallButton text='용서하기' />
+        </div>
       </div>
       <div className={`w-full h-[580px] overflow-y-scroll`}>
         {comment?.map((comment, index) => (
