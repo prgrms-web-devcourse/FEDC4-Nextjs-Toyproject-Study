@@ -122,7 +122,12 @@ const Header = () => {
               </div>
             ) : (
               location.pathname === '/' && (
-                <LargeButton text={'로그인'} onClick={handleLoginButtonClick} />
+                <div className='pb-5'>
+                  <LargeButton
+                    text={'로그인'}
+                    onClick={handleLoginButtonClick}
+                  />
+                </div>
               )
             )}
           </div>
