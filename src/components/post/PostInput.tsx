@@ -132,7 +132,9 @@ const PostInput = ({ width }: PostInputProps) => {
             }}
           />
         </div>
-        <div className={`flex w-11/12 pt-5 justify-start items-center`}>
+        <div
+          className={`flex flex-wrap w-11/12 pt-5 justify-start items-center`}
+        >
           <span className={`font-dgm whitespace-nowrap`}>배경색</span>
           {colorArr.map((color, index) => {
             const id = color;
@@ -157,8 +159,12 @@ const PostInput = ({ width }: PostInputProps) => {
             );
           })}
         </div>
-        <div className={`flex w-11/12 py-5 justify-start items-center`}>
-          <span className={`font-dgm whitespace-nowrap`}>아이콘</span>
+        <div
+          className={`flex flex-wrap w-11/12 py-5 justify-start items-center`}
+        >
+          <span className={`w-10 h10 mr-2 font-dgm whitespace-nowrap`}>
+            아이콘
+          </span>
           {imgArr.map((src, index) => {
             const selected = state.templateType.icon;
             return (

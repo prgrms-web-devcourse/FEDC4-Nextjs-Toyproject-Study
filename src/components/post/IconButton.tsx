@@ -14,7 +14,7 @@ const IconButton = ({ src, alt, onIconSelect, isSelected }) => {
     </div>
   ) : (
     <div
-      className={`h-10 w-10 mx-3 cursor-pointer hover:shadow-button-1 ${shadowClass}`}
+      className={`h-10 w-10 my-4 mx-3 cursor-pointer hover:shadow-button-1 ${shadowClass}`}
       onClick={() => onIconSelect(src)}
     >
       <img src={src} alt={alt} />
