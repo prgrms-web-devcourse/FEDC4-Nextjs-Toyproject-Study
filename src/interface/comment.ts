@@ -4,7 +4,7 @@ export interface CommentData {
   createAt: string;
   updateAt: string;
   user: {
-    name: string,
+    name: string;
   };
 }
 
