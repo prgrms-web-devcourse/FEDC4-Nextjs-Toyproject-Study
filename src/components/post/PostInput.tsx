@@ -9,14 +9,17 @@ import IconButton from '../../components/post/IconButton';
 import ColorPicker from '../../components/post/ColorPicker';
 import { useCallback, useState } from 'react';
 import { Input } from 'components/common/Input';
-import { SmallButton } from 'components/common/Button';
+import { LargeButton } from 'components/common/Button';
 import { useMutation } from 'react-query';
 import { createPost } from 'api/postApi';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 const PostInput = () => {
   const navigate = useNavigate();
-  const imgArr = [
+  const auth = useSelector((state: RootState) => state.auth);
+  const IMG_ARR = [
     null,
     icon_01,
     icon_02,
@@ -26,7 +29,7 @@ const PostInput = () => {
     icon_06,
     icon_07,
   ];
-  const colorArr = [
+  const COLOR_ARR = [
     '#FFFFFF',
     '#FFCAC8',
     '#FBD0F5',
@@ -37,6 +40,18 @@ const PostInput = () => {
     '#DEFF8B',
     '#F3F798',
   ];
+  const bg = {
+    '#FFFFFF': 'bg-white',
+    '#FFCAC8': 'bg-template-red',
+    '#FBD0F5': 'bg-template-pink',
+    '#B8B5FF': 'bg-template-purple',
+    '#94DAFF': 'bg-template-blue',
+    '#C7F5FE': 'bg-template-sky',
+    '#A3F7BF': 'bg-template-green',
+    '#DEFF8B': 'bg-template-lime',
+    '#F3F798': 'bg-template-yellow',
+  };
+
   const initialState = {
     userId: '1',
     title: '',
@@ -47,6 +62,10 @@ const PostInput = () => {
     },
     team: '',
   };
+  const date = new Date();
+  const formattedDate = `${date.getFullYear()}.${String(
+    date.getMonth() + 1,
+  ).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
 
   const mutation = useMutation(createPost, {
     onSuccess: (data) => {
@@ -98,87 +117,104 @@ const PostInput = () => {
 
   return (
     <div
-      className={`flex flex-col justify-center pb-12 px-20 justify-center items-center w-full`}
+      className={`flex flex-col justify-center pb-12 px-20 items-center w-screen`}
     >
       <div
-        className={`flex flex-col justify-center items-center w-1/2  border border-solid border-blue-gray-880 shadow-card-1 `}
+        className='flex flex-col justify-start items-center w-1/2 h-[688px] py-10 px-10 border border-solid border-blue-gray-880 shadow-card-1'
+        style={{ backgroundColor: state.templateType.color }}
       >
-        <div
-          className={`text-left flex items-center justify-center w-11/12 h-10 my-5`}
-        >
-          <Input
-            id={'postTitle'}
-            value={state.title}
-            placeHolder={'제목을 입력해 주세요'}
-            disabled={false}
-            onChange={(e) => {
-              handleTitleChange(e.target.value);
-            }}
-          />
+        <Input
+          id='postTitle'
+          value={state.title}
+          placeHolder='제목을 입력해 주세요'
+          disabled={false}
+          onChange={(e) => handleTitleChange(e.target.value)}
+          styleOption={`mb-6 focus:outline-none border border-solid border-blue-gray-200 hover:border-blue-gray-400 focus:border-blue-gray-999 text-body-2 placeholder:text-blue-gray-200 px-5 py-2.5 text-left flex items-center justify-center w-11/12 ${
+            bg[state.templateType.color]
+          }`}
+        />
+        <textarea
+          className={`w-11/12 h-3/4 relative text-left flex items-center justify-center border border-solid border-blue-gray-200 hover:border-blue-gray-400 focus:border-blue-gray-999 pl-1 pt-1 focus:outline-none resize-none ${
+            bg[state.templateType.color]
+          }`}
+          placeholder='반성문 내용을 입력해주세요.'
+          value={state.content}
+          onChange={(e) => handleContentChange(e.target.value)}
+        />
+        <div className={`w-11/12 flex flex-row justify-start gap-80 pt-5`}>
+          {state.templateType.icon ? (
+            <img
+              src={state.templateType.icon}
+              className={`w-[120px] h-[120px]`}
+            />
+          ) : (
+            <div className={`w-[120px] h-[120px]`} />
+          )}
+          <div className={`flex flex-col items-end justify-end w-full`}>
+            <span className={`text-right font-dgm`}>{formattedDate}</span>
+            <span className={`text-right font-dgm text-heading-3`}>
+              {auth.user.name}
+            </span>
+          </div>
         </div>
-        <div
-          className={`relative text-left flex items-center justify-center w-11/12 h-60 border border-solid border-[#2D4053] `}
-        >
-          <textarea
-            className={`w-full h-full pl-1 pt-1 focus:outline-none resize-none`}
-            placeholder={'반성문 내용을 입력해주세요.'}
-            value={state.content}
-            onChange={(e) => {
-              handleContentChange(e.target.value);
-            }}
-          />
-        </div>
-        <div className={`flex w-11/12 pt-5 justify-start items-center`}>
-          <span className={`font-dgm whitespace-nowrap`}>배경색</span>
-          {colorArr.map((color, index) => {
-            const id = color;
-            const selected = state.templateType.color;
+      </div>
 
-            return (
-              <ColorPicker
-                key={color}
-                id={color}
-                color={color}
-                isSelected={selected === id}
-                onColorSelect={(color) => {
-                  setState((prevState) => ({
-                    ...prevState,
-                    templateType: {
-                      ...prevState.templateType,
-                      color,
-                    },
-                  }));
-                }}
-              />
-            );
-          })}
+      <div className={`flex flex-col w-1/2`}>
+        <div className={`w-11/12 pt-5 justify-start items-center`}>
+          <span className={`font-dgm whitespace-nowrap mr-3`}>배경색</span>
+          <div className={`flex flex-row pt-3`}>
+            {COLOR_ARR.map((color, index) => {
+              const id = color;
+              const selected = state.templateType.color;
+
+              return (
+                <ColorPicker
+                  key={color}
+                  id={color}
+                  color={color}
+                  isSelected={selected === id}
+                  onColorSelect={(color) => {
+                    setState((prevState) => ({
+                      ...prevState,
+                      templateType: {
+                        ...prevState.templateType,
+                        color,
+                      },
+                    }));
+                  }}
+                />
+              );
+            })}
+          </div>
         </div>
-        <div className={`flex w-11/12 py-5 justify-start items-center`}>
-          <span className={`font-dgm`}>아이콘</span>
-          {imgArr.map((src, index) => {
-            const selected = state.templateType.icon;
-            return (
-              <IconButton
-                key={src}
-                src={src}
-                alt={''}
-                isSelected={selected === src}
-                onIconSelect={(src) => {
-                  setState((prevState) => ({
-                    ...prevState,
-                    templateType: {
-                      ...prevState.templateType,
-                      icon: src,
-                    },
-                  }));
-                }}
-              />
-            );
-          })}
+        <div className={`w-11/12 py-5 justify-start items-center`}>
+          <span className={`font-dgm whitespace-nowrap mr-3`}>아이콘</span>
+          <div className={`flex flex-row pt-3`}>
+            {IMG_ARR.map((src, index) => {
+              const selected = state.templateType.icon;
+              return (
+                <IconButton
+                  key={src}
+                  src={src}
+                  alt={''}
+                  isSelected={selected === src}
+                  onIconSelect={(src) => {
+                    setState((prevState) => ({
+                      ...prevState,
+                      templateType: {
+                        ...prevState.templateType,
+                        icon: src,
+                      },
+                    }));
+                  }}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
       <div className={`flex items-center justify-center my-6`}>
-        <SmallButton text={`반성문 제출`} onClick={postApi}></SmallButton>
+        <LargeButton text={`반성문 제출`} onClick={postApi}></LargeButton>
       </div>
     </div>
   );
