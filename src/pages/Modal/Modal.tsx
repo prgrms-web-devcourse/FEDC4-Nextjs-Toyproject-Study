@@ -12,9 +12,10 @@ interface ModalProps {
     showModal: boolean;
   };
   closeModal: (event) => void;
+  closeBtnClick?: (event) => void;
 }
 
-const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
+const Modal: FC<ModalProps> = ({ closeBtnClick, modalOption, closeModal }) => {
   const { postId, showModal } = modalOption;
   const initialState = {
     isLoading: false,
@@ -180,11 +181,23 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
             <div
               className={`flex flex-col bg-blue-gray-10 shadow-card-1 flex flex-row border border-solid border-blue-gray-800 justify-center items-center`}
             >
-              <LargeButton text='닫기'></LargeButton>
+              <LargeButton
+                onClick={closeBtnClick}
+                style={{
+                  fontWeight: 'bold',
+                  zIndex: '100',
+                  position: 'absolute',
+                  top: '0',
+                  right: '0',
+                  width: '60px',
+                  height: '55px',
+                }}
+                id='closeButton'
+                text='&#10005;'
+              ></LargeButton>
               {state.postData && (
                 <>
                   <ImageView postData={state.postData} />
-                  this is mobile
                   <Comment
                     likeCount={state.postData.likeCount}
                     postId={state.postData.postId}
