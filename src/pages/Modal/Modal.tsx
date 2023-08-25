@@ -81,10 +81,7 @@ const Modal = ({ modalOption, closeModal }: ModalProps) => {
             className={`bg-blue-gray-10 w-[1080px] shadow-card-1 h-[720px] flex flex-row border border-solid border-blue-gray-800 justify-center items-center`}
           >
             <>
-              <ImageView
-                postData={state.postData}
-                isLoading={state.isLoading}
-              />
+              <ImageView postData={state.postData} />
               <Comment
                 likeCount={state.postData.likeCount}
                 postId={state.postData.postId}
@@ -116,7 +113,6 @@ const Modal = ({ modalOption, closeModal }: ModalProps) => {
                   }
                   setState(updatedState);
                 }}
-                isLoading={state.isLoading}
               />
             </>
           </div>

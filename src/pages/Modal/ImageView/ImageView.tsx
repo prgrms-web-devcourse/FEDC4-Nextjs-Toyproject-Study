@@ -1,10 +1,9 @@
-const ImageView = ({ postData, isLoading }) => {
+const ImageView = ({ postData }) => {
   const { title, content, updatedAt, user, templateType } = postData;
   const template = templateType
     ? JSON.parse(templateType.replace(/'/g, '"'))
     : {};
   const date = new Date(postData.updateAt);
-  if (isLoading) return <div>loading!!</div>;
   return (
     <div
       className='relative flex-col justify-center items-center w-1/2 h-[688px] mx-3 border border-solid border-blue-gray-800'
