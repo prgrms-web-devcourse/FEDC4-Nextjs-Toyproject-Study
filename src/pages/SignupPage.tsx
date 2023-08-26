@@ -1,4 +1,4 @@
-import HeadingText from '../components/auth/HeadingText';
+import HeadingText from '../components/common/HeadingText';
 import SignupForm from 'components/auth/SignupForm';
 
 const SignupPage = () => {
