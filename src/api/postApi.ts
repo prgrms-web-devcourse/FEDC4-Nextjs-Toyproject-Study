@@ -26,3 +26,8 @@ export const likeToggle = async ({ postId }) => {
   const response = await request.put(`/posts/${postId}/likes`);
   return response.data;
 };
+
+export const forgive = async ({ postId }) => {
+  const response = await request.put(`/posts/${postId}/forgive`);
+  return response.data;
+};
