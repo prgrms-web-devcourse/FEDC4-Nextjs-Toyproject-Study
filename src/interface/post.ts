@@ -6,9 +6,9 @@ export interface PostType {
   user: string;
 }
 
-export type Color = {
-  [key: number]: string;
-};
+// export type Color = {
+//   [key: number]: string;
+// };
 
 export interface postModalType {
   isLoading: boolean;
@@ -20,16 +20,21 @@ interface PostData {
   postId?: number;
   title?: string;
   content?: string;
-  createAt?: string;
-  isAnonymous?: string;
-  likeCount?: number;
-  team?: string;
-  isLike?: boolean;
   templateType?: {
     color: string;
     icon: string;
   };
+  isAnonymous?: boolean;
+  team?: string;
+  createAt?: string;
   updateAt?: string;
+  isLike?: boolean;
+  isForgive?: boolean;
+  forgiveCount?: number;
+  user?: {
+    name: string;
+    nickName: string;
+  };
   comment?: Array<{
     commentId: number;
     comment: string;
@@ -39,7 +44,5 @@ interface PostData {
       name: string;
     };
   }>;
-  user?: {
-    name: string;
-  };
+  likeCount?: number;
 }

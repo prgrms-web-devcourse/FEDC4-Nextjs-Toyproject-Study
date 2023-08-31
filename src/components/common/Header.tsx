@@ -124,19 +124,20 @@ const Header = () => {
               {auth.isLogin ? (
                 <div className='flex items-center'>
                   {location.pathname === '/' && (
-                    <button onClick={handlePostButtonClick}>
-                      <img
-                        src={pencil}
-                        alt='반성문작성'
-                        width={42}
-                        height={42}
-                      />
-                    </button>
+                    <div className='p-2'>
+                      <button onClick={handlePostButtonClick}>
+                        <img
+                          src={pencil}
+                          alt='반성문작성'
+                          width={32}
+                          height={32}
+                        />
+                      </button>
+                    </div>
                   )}
                   <button onClick={handleModal}>
                     <div className=''>
-                      <div>
-                        <span className='inline-block w-5 h-11 align-middle'></span>
+                      <div className='p-2'>
                         <img
                           className='relative inline-block'
                           src={hamburger}
@@ -144,7 +145,7 @@ const Header = () => {
                           width={42}
                           height={42}
                         />
-                        <span className='inline-block w-5 h-11 align-middle'></span>
+                        <span className='inline-block h-11 align-middle'></span>
                       </div>
                     </div>
                   </button>
@@ -178,7 +179,6 @@ const Header = () => {
                 location.pathname === '/' && (
                   <div className=''>
                     <LargeButton
-                      style={{ width: '120px', height: '50px' }}
                       text={'로그인'}
                       onClick={handleLoginButtonClick}
                     />
@@ -199,19 +199,20 @@ const Header = () => {
               {auth.isLogin ? (
                 <div className='flex items-center'>
                   {location.pathname === '/' && (
-                    <button onClick={handlePostButtonClick}>
-                      <img
-                        src={pencil}
-                        alt='반성문작성'
-                        width={42}
-                        height={42}
-                      />
-                    </button>
+                    <div className='p-2'>
+                      <button onClick={handlePostButtonClick}>
+                        <img
+                          src={pencil}
+                          alt='반성문작성'
+                          width={32}
+                          height={32}
+                        />
+                      </button>
+                    </div>
                   )}
                   <button onClick={handleModal}>
                     <div className=''>
-                      <div>
-                        <span className='inline-block w-5 h-11 align-middle'></span>
+                      <div className='p-2'>
                         <img
                           className='relative inline-block'
                           src={hamburger}
@@ -219,7 +220,7 @@ const Header = () => {
                           width={42}
                           height={42}
                         />
-                        <span className='inline-block w-5 h-11 align-middle'></span>
+                        <span className='inline-block h-11 align-middle'></span>
                       </div>
                     </div>
                   </button>
@@ -253,7 +254,6 @@ const Header = () => {
                 location.pathname === '/' && (
                   <div className=''>
                     <LargeButton
-                      style={{ width: '120px', height: '50px' }}
                       text={'로그인'}
                       onClick={handleLoginButtonClick}
                     />

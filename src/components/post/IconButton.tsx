@@ -3,7 +3,7 @@ const IconButton = ({ src, alt, onIconSelect, isSelected }) => {
 
   return !src ? (
     <div
-      className={`flex items-center justify-center h-10 w-10 mx-3 cursor-pointer border border-solid border-blue-gray-880 hover:shadow-button-1 ${shadowClass}`}
+      className={`flex items-center justify-center h-10 w-11 mr-3 cursor-pointer border border-solid border-blue-gray-880 hover:shadow-button-1 ${shadowClass}`}
       onClick={() => onIconSelect(src)}
     >
       <span className={`text-center text-xs`}>

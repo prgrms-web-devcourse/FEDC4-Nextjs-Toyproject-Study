@@ -21,7 +21,7 @@ const PostGuidButton = ({ width }: PostGuidButtonProps) => {
   return (
     <div
       id='postContainer'
-      className={`flex flex-col justify-center align-middle py-12 justify-center items-center w-full`}
+      className={`flex flex-col justify-center ${width} align-middle py-12 justify-center items-center w-full`}
     >
       <button
         id={`postGuidButton`}

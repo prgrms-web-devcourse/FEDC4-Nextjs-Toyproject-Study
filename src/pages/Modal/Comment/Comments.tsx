@@ -7,7 +7,9 @@ import heart from 'assets/img/heart.svg';
 import heartFill from 'assets/img/heart-fill.svg';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
-import { likeToggle } from '../../../api/postApi';
+import { likeToggle, forgive } from '../../../api/postApi';
+import { SmallButton } from 'components/common/Button';
+import App from '../../../App';
 
 const Comment = ({
   likeCount,
@@ -15,9 +17,12 @@ const Comment = ({
   comment,
   addComment,
   isLike,
+  isForgive,
+  forgiveCount,
   clickLike,
+  clickForgive,
 }) => {
-  const [commentValue, setCommentValue] = useState('');
+  const [commentValue, setCommentValue] = useState(isForgive);
   const auth = useSelector((state: RootState) => state.auth);
   const initialState = {
     isLogin: auth.isLogin,
@@ -36,6 +41,12 @@ const Comment = ({
   const clickLime = useMutation(likeToggle, {
     onSuccess: (data) => {
       alert(data.message);
+    },
+  });
+
+  const clickForgiveBtn = useMutation(forgive, {
+    onSuccess: (data) => {
+      alert('용서하였습니다.');
     },
   });
 
@@ -74,28 +85,46 @@ const Comment = ({
       className={`flex flex-col w-full items-start justify-between border-l border-solid border-blue-gray-800 rounded-t`}
     >
       <div
-        className={`h-[56px] w-full flex flex-row justify-between items-center px-2 border-b border-solid border-blue-gray-800`}
+        className={`h-[56px] w-full flex flex-row justify-between items-center px-3 py-1.5 border-b border-solid border-blue-gray-800`}
       >
         <span className={`text-subtitle-1`}>좋아요 {likeCount}개</span>
         <img
           className={`w-[36px] h-[36px] justify-center items-center cursor-pointer invisible`}
           src={share}
         />
-
-        <img
-          className={`w-[32px] h-[32px] cursor-pointer justify-end`}
-          src={isLike ? heartFill : heart}
-          onClick={() => {
-            if (state.isLogin) {
-              clickLime.mutate({
-                postId: postId,
-              });
-              clickLike(!isLike);
-            } else {
-              alert('좋아요는 로그인시 사용 가능합니다.');
-            }
-          }}
-        />
+        <div className='flex flex-row gap-3'>
+          <img
+            className={`w-[32px] h-[32px] cursor-pointer justify-end`}
+            src={isLike ? heartFill : heart}
+            onClick={() => {
+              if (state.isLogin) {
+                clickLime.mutate({
+                  postId: postId,
+                });
+                clickLike(!isLike);
+              } else {
+                alert('"좋아요"는 로그인시 사용 가능합니다.');
+              }
+            }}
+          />
+          {isForgive ? (
+            <SmallButton text='용서됨' disabled={true} />
+          ) : (
+            <SmallButton
+              text='용서하기'
+              onClick={() => {
+                if (state.isLogin) {
+                  clickForgiveBtn.mutate({
+                    postId: postId,
+                  });
+                  clickForgive(true, forgiveCount + 1);
+                } else {
+                  alert('"용서하기"는 로그인시 사용 가능합니다.');
+                }
+              }}
+            />
+          )}
+        </div>
       </div>
       <div className={`w-full h-[580px] overflow-y-scroll`}>
         {comment?.map((comment, index) => (

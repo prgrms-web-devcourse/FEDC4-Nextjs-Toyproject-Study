@@ -1,5 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none">
-<path d="M4 18L20 18" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-<path d="M4 12L20 12" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-<path d="M4 6L20 6" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="hamburger">
+<g id="Group">
+<g id="Path 2">
+<mask id="path-1-outside-1_512_168" maskUnits="userSpaceOnUse" x="9" y="10" width="22" height="3" fill="black">
+<rect fill="white" x="9" y="10" width="22" height="3"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10 11.6667H30Z"/>
+</mask>
+<path d="M10 10.6667H9V12.6667H10V10.6667ZM30 12.6667H31V10.6667H30V12.6667ZM10 12.6667H30V10.6667H10V12.6667Z" fill="#2D4053" mask="url(#path-1-outside-1_512_168)"/>
+</g>
+<g id="Path 2_2">
+<mask id="path-3-outside-2_512_168" maskUnits="userSpaceOnUse" x="9" y="19" width="22" height="2" fill="black">
+<rect fill="white" x="9" y="19" width="22" height="2"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10 20H30Z"/>
+</mask>
+<path d="M10 19H9V21H10V19ZM30 21H31V19H30V21ZM10 21H30V19H10V21Z" fill="#2D4053" mask="url(#path-3-outside-2_512_168)"/>
+</g>
+<g id="Path 2_3">
+<mask id="path-5-outside-3_512_168" maskUnits="userSpaceOnUse" x="9" y="27.3335" width="22" height="2" fill="black">
+<rect fill="white" x="9" y="27.3335" width="22" height="2"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10 28.3335H30Z"/>
+</mask>
+<path d="M10 27.3335H9V29.3335H10V27.3335ZM30 29.3335H31V27.3335H30V29.3335ZM10 29.3335H30V27.3335H10V29.3335Z" fill="#2D4053" mask="url(#path-5-outside-3_512_168)"/>
+</g>
+</g>
+</g>
 </svg>

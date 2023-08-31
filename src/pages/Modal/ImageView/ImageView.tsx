@@ -18,7 +18,11 @@ const ImageView = ({ postData }) => {
         <span className='text-heading-5 text-right'>
           {date.getFullYear()}.{date.getMonth() + 1}.{date.getDate()}
         </span>
-        <span className='text-heading-3 text-right'>{user?.name}</span>
+        {postData.forgiveCount >= 5 ? (
+          <span className='text-heading-3 text-right'>{user.nickName}</span>
+        ) : (
+          <span className='text-heading-3 text-right'>{user?.name}</span>
+        )}
       </div>
       {template.icon && (
         <img

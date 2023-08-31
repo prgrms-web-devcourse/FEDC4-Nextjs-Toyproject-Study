@@ -78,6 +78,8 @@ const Modal: FC<ModalProps> = ({ closeBtnClick, modalOption, closeModal }) => {
                     likeCount={state.postData.likeCount}
                     postId={state.postData.postId}
                     isLike={state.postData.isLike}
+                    isForgive={state.postData.isForgive}
+                    forgiveCount={state.postData.forgiveCount}
                     comment={state.postData.comment}
                     addComment={(newComment) => {
                       const updatedState = { ...state };
@@ -103,6 +105,12 @@ const Modal: FC<ModalProps> = ({ closeBtnClick, modalOption, closeModal }) => {
                           updatedState.postData.likeCount -= 1;
                         }
                       }
+                      setState(updatedState);
+                    }}
+                    clickForgive={(isForgive, forgiveCount) => {
+                      const updatedState = { ...state };
+                      updatedState.postData.isForgive = isForgive;
+                      updatedState.postData.forgiveCount = forgiveCount;
                       setState(updatedState);
                     }}
                   />
@@ -160,6 +168,9 @@ const Modal: FC<ModalProps> = ({ closeBtnClick, modalOption, closeModal }) => {
                       }
                       setState(updatedState);
                     }}
+                    isForgive={undefined}
+                    forgiveCount={undefined}
+                    clickForgive={undefined}
                   />
                 </>
               )}
@@ -229,6 +240,9 @@ const Modal: FC<ModalProps> = ({ closeBtnClick, modalOption, closeModal }) => {
                       }
                       setState(updatedState);
                     }}
+                    isForgive={undefined}
+                    forgiveCount={undefined}
+                    clickForgive={undefined}
                   />
                 </>
               )}
