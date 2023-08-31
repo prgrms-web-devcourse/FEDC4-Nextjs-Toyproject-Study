@@ -31,3 +31,8 @@ export const forgive = async ({ postId }) => {
   const response = await request.put(`/posts/${postId}/forgive`);
   return response.data;
 };
+
+export const getMyPosts = async () => {
+  const response = await request.get(`/posts/mypost`);
+  return response.data;
+};
