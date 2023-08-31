@@ -20,21 +20,21 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
     postData: {},
   };
   const [state, setState] = useState<postModalType>(initialState);
+  const fetchData = async () => {
+    try {
+      if (postId !== null) {
+        const response = await getPostDetail({ postId: postId });
+        console.log(response);
+        setState({ ...state, postData: response.data });
+      }
+    } catch (error) {
+      alert(error);
+      setState({ ...state, errorMessage: 'Error fetching data:' });
+      setState({ ...state, isLoading: true });
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (postId !== null) {
-          const response = await getPostDetail({ postId: postId });
-          setState({ ...state, postData: response.data });
-        }
-      } catch (error) {
-        alert(error);
-        setState({ ...state, errorMessage: 'Error fetching data:' });
-        setState({ ...state, isLoading: true });
-      }
-    };
-
     fetchData();
   }, [postId]);
 
@@ -66,15 +66,11 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
                 isForgive={state.postData.isForgive}
                 forgiveCount={state.postData.forgiveCount}
                 comment={state.postData.comment}
-                addComment={(newComment) => {
-                  const updatedState = { ...state };
-                  if (updatedState.postData.comment) {
-                    updatedState.postData.comment = [
-                      ...updatedState.postData.comment,
-                      newComment,
-                    ];
-                  }
-                  setState(updatedState);
+                updateComment={() => {
+                  fetchData();
+                }}
+                addComment={() => {
+                  fetchData();
                 }}
                 clickLike={(isLike) => {
                   const updatedState = { ...state };

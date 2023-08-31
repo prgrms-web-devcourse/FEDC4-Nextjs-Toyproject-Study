@@ -1,6 +1,6 @@
 import { Input } from 'components/common/Input';
 import { useCallback, useState } from 'react';
-import { createComment } from 'api/comment';
+import { createComment, deleteComment, editComment } from 'api/comment';
 import { useMutation } from 'react-query';
 import share from 'assets/img/share.svg';
 import heart from 'assets/img/heart.svg';
@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
 import { likeToggle, forgive } from '../../../api/postApi';
 import { SmallButton } from 'components/common/Button';
-import App from '../../../App';
+import CommentCard from '../../../components/comment/CommentCard';
 
 const Comment = ({
   likeCount,
@@ -20,9 +20,14 @@ const Comment = ({
   isForgive,
   forgiveCount,
   clickLike,
+  updateComment,
   clickForgive,
 }) => {
   const [commentValue, setCommentValue] = useState(isForgive);
+  const [editCommentState, setEditCommentState] = useState({
+    comment: '',
+    commentId: 0,
+  });
   const auth = useSelector((state: RootState) => state.auth);
   const initialState = {
     isLogin: auth.isLogin,
@@ -38,6 +43,16 @@ const Comment = ({
       console.log('error~~');
     },
   });
+
+  const commentDelete = useMutation(deleteComment, {
+    onSuccess: (data) => {
+      console.log('data send success', data);
+    },
+    onError: (e) => {
+      console.log('error~~');
+    },
+  });
+
   const clickLime = useMutation(likeToggle, {
     onSuccess: (data) => {
       alert(data.message);
@@ -50,20 +65,43 @@ const Comment = ({
     },
   });
 
+  const commentEdit = useMutation(editComment, {
+    onSuccess: (data) => {
+      console.log('data send success', data);
+    },
+    onError: (e) => {
+      console.log('error~~');
+    },
+  });
+
   const viewComment = () => {
     if (commentValue.length > 0) {
-      const newComment = {
-        comment: commentValue,
-        user: {
-          name: auth.user.name,
-        },
-      };
-      setCommentValue('');
-      addComment(newComment);
-      sendComment.mutate({
-        postId: postId,
-        comment: newComment.comment,
-      });
+      if (editCommentState.commentId) {
+        if (editCommentState.comment !== commentValue) {
+          commentEdit
+            .mutateAsync({
+              postId: postId,
+              commentId: editCommentState.commentId,
+              comment: commentValue,
+            })
+            .then(() => {
+              setCommentValue('');
+              updateComment();
+            });
+        } else {
+          setCommentValue('');
+        }
+      } else {
+        sendComment
+          .mutateAsync({
+            postId: postId,
+            comment: commentValue,
+          })
+          .then(() => {
+            setCommentValue('');
+            updateComment();
+          });
+      }
     }
   };
   const throttle = (callback, delay) => {
@@ -128,15 +166,27 @@ const Comment = ({
       </div>
       <div className={`w-full h-[580px] overflow-y-scroll`}>
         {comment?.map((comment, index) => (
-          <div
-            className='flex flex-col m-3 px-4 py-2 bg-blue-gray-50 '
+          <CommentCard
+            user={auth.user.userId || 0}
             key={index}
-          >
-            <span className={`text-left font-bold text-subtitle-1`}>
-              {comment.user.name}
-            </span>
-            <span className={`text-left text-body-2`}>{comment.comment}</span>
-          </div>
+            comment={comment}
+            onDelete={(commentId) => {
+              if (commentId) {
+                commentDelete
+                  .mutateAsync({
+                    postId: postId,
+                    commentId: commentId,
+                  })
+                  .then(() => {
+                    updateComment();
+                  });
+              }
+            }}
+            onEdit={(commentId) => {
+              setCommentValue(comment.comment);
+              setEditCommentState({ comment: comment.comment, commentId });
+            }}
+          />
         ))}
       </div>
       <div className={`w-[530px] pb-5 px-5 flex flex-row mb-2`}>
