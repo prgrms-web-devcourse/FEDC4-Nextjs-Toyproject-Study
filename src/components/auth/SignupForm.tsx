@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { AxiosError } from 'axios';
@@ -17,6 +17,12 @@ const SignupForm = () => {
   const [isIdError, setIsIdError] = useState(false);
   const [isPasswordError, setIsPasswordError] = useState(false);
   const [isPasswordConfirmError, setIsPasswordConfirmError] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      alert('이름은 한번 정해지면 수정이 불가합니다!');
+    }, 300);
+  }, []);
 
   const signupMutation = useMutation(signUp, {
     onError: (error: AxiosError) => {
@@ -51,7 +57,7 @@ const SignupForm = () => {
   }, []);
 
   const handlePasswordChange = useCallback((value: string) => {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[0-9]).{4,}$/; // 영문, 숫자 포함 4자 이상
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,}$/; // 영문, 숫자 포함 4자 이상
     setPassword(value);
 
     if (passwordRegex.test(value)) {
@@ -119,9 +125,6 @@ const SignupForm = () => {
         {isPcOrTablet && (
           <form className='max-w-md mx-auto' onSubmit={handleSubmit}>
             <div className='px-5 py-6 border border-blue-gray-880 bg-white shadow-card-1'>
-              <div style={{ color: '#f44336', fontSize: '0.75em' }}>
-                이름은 한번 정해지면 수정이 불가합니다.
-              </div>
               <AuthInput
                 label='이름'
                 id='name'
@@ -149,7 +152,7 @@ const SignupForm = () => {
                 placeholder='비밀번호를 입력해주세요.'
                 onChange={(e) => handlePasswordChange(e.target.value)}
                 isError={isPasswordError}
-                errorText='영문 소문자, 숫자를 필수로 포함하여 4자 이상 입력해주세요.'
+                errorText='영문, 숫자를 필수로 포함하여 4자 이상 입력해주세요.'
                 className='mb-1'
               />
               <AuthInput
@@ -170,9 +173,6 @@ const SignupForm = () => {
         {isMobile && (
           <form className='max-w-md mx-auto' onSubmit={handleSubmit}>
             <div className='m-5 px-5 py-6 border border-blue-gray-880 bg-white shadow-card-1'>
-              <div style={{ color: '#f44336', fontSize: '0.75em' }}>
-                이름은 한번 정해지면 수정이 불가합니다.
-              </div>
               <AuthInput
                 label='이름'
                 id='name'
@@ -200,7 +200,7 @@ const SignupForm = () => {
                 placeholder='비밀번호를 입력해주세요.'
                 onChange={(e) => handlePasswordChange(e.target.value)}
                 isError={isPasswordError}
-                errorText='영문 소문자, 숫자를 필수로 포함하여 4자 이상 입력해주세요.'
+                errorText='영문, 숫자를 필수로 포함하여 4자 이상 입력해주세요.'
                 className='mb-1'
               />
               <AuthInput
