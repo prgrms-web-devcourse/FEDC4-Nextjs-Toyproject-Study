@@ -1,53 +1,29 @@
-import Post from './Post';
+import Post from '../mainpage/Post';
 import { useEffect, useRef, useState } from 'react';
-import { getPost } from 'api/postApi';
+import { getMyPosts } from 'api/postApi';
 import { PostType } from 'interface/index';
+
 interface PostContainerProps {
   handleModalClick: (postId) => void;
 }
 
 const PostContainer: React.FC<PostContainerProps> = ({ handleModalClick }) => {
-  const limit = 12;
   const endRef = useRef<HTMLDivElement>(null);
-  const [start, setStart] = useState<number>(1);
   const [datas, setDatas] = useState<PostType[]>([]);
 
   const fetchData = async () => {
     try {
-      const response = await getPost({ pageId: start, limitNumber: limit });
+      const response = await getMyPosts();
       setDatas([...datas, ...response.data]);
-      setStart(start + 1);
     } catch (error) {
       alert(error);
       console.error('Error fetching data.');
     }
   };
 
-  const handleInfiniteScroll = (entries, observer) => {
-    entries.forEach((entry) => {
-      if (
-        entry.isIntersecting &&
-        datas.length % limit === 0 &&
-        datas.length > 0
-      ) {
-        observer.unobserve(entry.target);
-        fetchData();
-      }
-    });
-  };
-
   useEffect(() => {
     fetchData();
   }, []);
-
-  useEffect(() => {
-    if (!endRef.current) return;
-
-    const observer = new IntersectionObserver(handleInfiniteScroll, {
-      threshold: 1.0,
-    });
-    endRef.current && observer.observe(endRef.current);
-  }, [handleInfiniteScroll]);
 
   return (
     <div className='flex flex-col justify-center items-center max-w-[1200px] mx-auto bg-blue-gray-25'>

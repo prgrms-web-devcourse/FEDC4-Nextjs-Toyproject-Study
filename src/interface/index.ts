@@ -1,14 +1,18 @@
 export type PostType = {
   postId: number;
-  user: { name: string };
   title: string;
   content: string;
   templateType?: string;
   isAnonymous?: boolean;
+  team?: string;
   createAt?: string;
   updateAt?: string;
-  team?: string;
+  user: { name: string; nickName: string };
+  commentCount: number;
+  likeCount: number;
+  forgiveCount: number;
 };
+
 export type Color = {
   [key: number]: string;
 };
