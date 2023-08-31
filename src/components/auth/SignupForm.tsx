@@ -119,12 +119,15 @@ const SignupForm = () => {
         {isPcOrTablet && (
           <form className='max-w-md mx-auto' onSubmit={handleSubmit}>
             <div className='px-5 py-6 border border-blue-gray-880 bg-white shadow-card-1'>
+              <div style={{ color: '#E55451	', fontSize: '0.8em' }}>
+                이름은 한번 정해지면 수정이 불가합니다.
+              </div>
               <AuthInput
                 label='이름'
                 id='name'
                 type='text'
                 value={name}
-                placeholder='이름을 입력해주세요. (한번 정해지면 수정이 불가합니다)'
+                placeholder='이름을 입력해주세요.'
                 onChange={(e) => handleNameChange(e.target.value)}
                 isError={isNameError}
                 errorText='2~5자로 입력해주세요.'
@@ -167,6 +170,9 @@ const SignupForm = () => {
         {isMobile && (
           <form className='max-w-md mx-auto' onSubmit={handleSubmit}>
             <div className='m-5 px-5 py-6 border border-blue-gray-880 bg-white shadow-card-1'>
+              <div style={{ color: '#E55451	', fontSize: '0.8em' }}>
+                이름은 한번 정해지면 수정이 불가합니다.
+              </div>
               <AuthInput
                 label='이름'
                 id='name'
