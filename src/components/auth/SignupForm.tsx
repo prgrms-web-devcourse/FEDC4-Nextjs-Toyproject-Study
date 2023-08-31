@@ -149,7 +149,7 @@ const SignupForm = () => {
                 placeholder='비밀번호를 입력해주세요.'
                 onChange={(e) => handlePasswordChange(e.target.value)}
                 isError={isPasswordError}
-                errorText='영어, 숫자를 필수로 포함하여 4자 이상 입력해주세요.'
+                errorText='영문, 숫자를 필수로 포함하여 4자 이상 입력해주세요.'
                 className='mb-1'
               />
               <AuthInput
@@ -200,7 +200,7 @@ const SignupForm = () => {
                 placeholder='비밀번호를 입력해주세요.'
                 onChange={(e) => handlePasswordChange(e.target.value)}
                 isError={isPasswordError}
-                errorText='영어, 숫자를 필수로 포함하여 4자 이상 입력해주세요.'
+                errorText='영문, 숫자를 필수로 포함하여 4자 이상 입력해주세요.'
                 className='mb-1'
               />
               <AuthInput
