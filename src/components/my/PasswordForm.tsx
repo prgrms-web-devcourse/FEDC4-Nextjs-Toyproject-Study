@@ -1,13 +1,19 @@
 import React, { useCallback, useState } from 'react';
 import AuthInput from '../auth/AuthInput';
 import { useMutation } from 'react-query';
-import { changePassword, signUp } from '../../api/auth';
+import { changePassword } from '../../api/auth';
 import { AxiosError } from 'axios';
 import { SmallButton } from '../common/Button';
 import arrowDown from 'assets/img/arrow-down.svg';
 import arrowUp from 'assets/img/arrow-up.svg';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../store';
+import { logout } from '../../store/auth';
+import { useNavigate } from 'react-router-dom';
 
 const PasswordForm = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
   const [isOpen, setIsOpen] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
@@ -32,8 +38,9 @@ const PasswordForm = () => {
       );
     },
     onSuccess: () => {
-      alert('변경되었습니다.');
-      toggleForm();
+      alert('변경되었습니다. 다시 로그인 해주세요.');
+      dispatch(logout());
+      navigate('/login');
     },
   });
 
