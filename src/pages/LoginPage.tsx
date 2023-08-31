@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
-import HeadingText from '../components/auth/HeadingText';
+import HeadingText from '../components/common/HeadingText';
 import LoginForm from '../components/auth/LoginForm';
 
 const LoginPage = () => {
