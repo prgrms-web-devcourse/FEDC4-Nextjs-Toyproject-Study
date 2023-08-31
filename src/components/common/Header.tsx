@@ -118,7 +118,7 @@ const Header = () => {
         <header className='border-b border-solid border-blue-gray-800 bg-blue-gray-10'>
           <div className='flex justify-between max-w-screen-xl mx-auto px-12 py-4'>
             <Link to='/'>
-              <h1 className='p-4 text-heading-1'>고해성사</h1>
+              <h1 className='p-4 -ml-8 text-heading-2'>고해성사</h1>
             </Link>
             <div className='flex items-center justify-evenly'>
               {auth.isLogin ? (
@@ -178,7 +178,7 @@ const Header = () => {
                 location.pathname === '/' && (
                   <div className=''>
                     <LargeButton
-                      style={{ width: '150px', height: '60px' }}
+                      style={{ width: '120px', height: '50px' }}
                       text={'로그인'}
                       onClick={handleLoginButtonClick}
                     />
@@ -193,7 +193,7 @@ const Header = () => {
         <header className='border-b border-solid border-blue-gray-800 bg-blue-gray-10'>
           <div className='flex justify-between max-w-screen-xl mx-auto px-2 py-2'>
             <Link to='/'>
-              <h1 className='p-4 text-heading-1'>고해성사</h1>
+              <h1 className='p-4 text-heading-3'>고해성사</h1>
             </Link>
             <div className='flex items-center justify-evenly'>
               {auth.isLogin ? (
@@ -253,7 +253,7 @@ const Header = () => {
                 location.pathname === '/' && (
                   <div className=''>
                     <LargeButton
-                      style={{ width: '150px', height: '60px' }}
+                      style={{ width: '120px', height: '50px' }}
                       text={'로그인'}
                       onClick={handleLoginButtonClick}
                     />
