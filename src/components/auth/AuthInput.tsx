@@ -38,7 +38,7 @@ const AuthInput = ({
         disabled={false}
       />
       {isError && (
-        <p className='mt-1 text-caption-2 text-danger'>{errorText}</p>
+        <p className='mt-1 text-caption-2 text-danger text-left'>{errorText}</p>
       )}
     </div>
   );
