@@ -50,7 +50,7 @@ const PostContainer: React.FC<PostContainerProps> = ({ handleModalClick }) => {
   }, [handleInfiniteScroll]);
 
   return (
-    <div className='flex flex-col justify-center items-center max-w-[1200px] mx-auto bg-blue-gray-25'>
+    <div className='flex max-w-[1200px] mx-auto bg-blue-gray-25'>
       <div className='flex flex-wrap justify-center py-14'>
         {datas ? (
           datas.map((post, idx) => (
