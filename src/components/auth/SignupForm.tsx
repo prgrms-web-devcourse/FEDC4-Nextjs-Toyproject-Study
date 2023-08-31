@@ -124,7 +124,7 @@ const SignupForm = () => {
                 id='name'
                 type='text'
                 value={name}
-                placeholder='이름을 입력해주세요.'
+                placeholder='이름을 입력해주세요. (한번 정해지면 수정이 불가합니다)'
                 onChange={(e) => handleNameChange(e.target.value)}
                 isError={isNameError}
                 errorText='2~5자로 입력해주세요.'
