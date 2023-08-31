@@ -40,7 +40,7 @@ const SignupForm = () => {
   }, []);
 
   const handleIdChange = useCallback((value: string) => {
-    const idRegex = /^[A-Za-z0-9]{6,}$/; // 영문, 숫자 조합 6자 이상
+    const idRegex = /^[a-z0-9]{6,}$/; // 영문, 숫자 조합 6자 이상
     setId(value);
 
     if (idRegex.test(value)) {
@@ -51,7 +51,7 @@ const SignupForm = () => {
   }, []);
 
   const handlePasswordChange = useCallback((value: string) => {
-    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,}$/; // 영문, 숫자 포함 4자 이상
+    const passwordRegex = /^(?=.*[a-z])(?=.*[0-9]).{4,}$/; // 영문, 숫자 포함 4자 이상
     setPassword(value);
 
     if (passwordRegex.test(value)) {
