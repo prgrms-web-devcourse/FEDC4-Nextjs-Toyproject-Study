@@ -119,7 +119,7 @@ const SignupForm = () => {
         {isPcOrTablet && (
           <form className='max-w-md mx-auto' onSubmit={handleSubmit}>
             <div className='px-5 py-6 border border-blue-gray-880 bg-white shadow-card-1'>
-              <div style={{ color: '#E55451	', fontSize: '0.8em' }}>
+              <div style={{ color: '#f44336', fontSize: '0.75em' }}>
                 이름은 한번 정해지면 수정이 불가합니다.
               </div>
               <AuthInput
@@ -170,7 +170,7 @@ const SignupForm = () => {
         {isMobile && (
           <form className='max-w-md mx-auto' onSubmit={handleSubmit}>
             <div className='m-5 px-5 py-6 border border-blue-gray-880 bg-white shadow-card-1'>
-              <div style={{ color: '#E55451	', fontSize: '0.8em' }}>
+              <div style={{ color: '#f44336', fontSize: '0.75em' }}>
                 이름은 한번 정해지면 수정이 불가합니다.
               </div>
               <AuthInput
