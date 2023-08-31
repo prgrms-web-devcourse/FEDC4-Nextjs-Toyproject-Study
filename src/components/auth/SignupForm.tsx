@@ -139,7 +139,7 @@ const SignupForm = () => {
                 placeholder='아이디를 입력해주세요.'
                 onChange={(e) => handleIdChange(e.target.value)}
                 isError={isIdError}
-                errorText='영문, 숫자만 사용해 최소 6자 이상 입력해주세요.'
+                errorText='영문 소문자, 숫자만 사용하여 최소 6자 이상 입력해주세요.'
               />
               <AuthInput
                 label='비밀번호'
@@ -149,7 +149,7 @@ const SignupForm = () => {
                 placeholder='비밀번호를 입력해주세요.'
                 onChange={(e) => handlePasswordChange(e.target.value)}
                 isError={isPasswordError}
-                errorText='영문, 숫자를 필수로 포함하여 4자 이상 입력해주세요.'
+                errorText='영문 소문자, 숫자를 필수로 포함하여 4자 이상 입력해주세요.'
                 className='mb-1'
               />
               <AuthInput
@@ -190,7 +190,7 @@ const SignupForm = () => {
                 placeholder='아이디를 입력해주세요.'
                 onChange={(e) => handleIdChange(e.target.value)}
                 isError={isIdError}
-                errorText='영문, 숫자만 사용해 최소 6자 이상 입력해주세요.'
+                errorText='영문 소문자, 숫자만 사용하여 최소 6자 이상 입력해주세요.'
               />
               <AuthInput
                 label='비밀번호'
@@ -200,7 +200,7 @@ const SignupForm = () => {
                 placeholder='비밀번호를 입력해주세요.'
                 onChange={(e) => handlePasswordChange(e.target.value)}
                 isError={isPasswordError}
-                errorText='영문, 숫자를 필수로 포함하여 4자 이상 입력해주세요.'
+                errorText='영문 소문자, 숫자를 필수로 포함하여 4자 이상 입력해주세요.'
                 className='mb-1'
               />
               <AuthInput
