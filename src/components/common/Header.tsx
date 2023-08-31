@@ -150,7 +150,7 @@ const Header = () => {
                     </div>
                   </button>
                   {isModalOpen && (
-                    <div className='absolute top-32 right-0 -translate-x-1/2 flex flex-col justify-between items-center w-36 h-auto border bg-blue-gray-10 shadow-md z-10'>
+                    <div className='absolute top-28 right-0 -translate-x-1/2 flex flex-col justify-between items-center w-36 h-auto border bg-blue-gray-10 shadow-md z-10'>
                       <div className='w-5/6 text-heading-4 border-b py-6 text-center font-semibold'>
                         {auth.user.name} 님
                       </div>
@@ -225,7 +225,7 @@ const Header = () => {
                     </div>
                   </button>
                   {isModalOpen && (
-                    <div className='absolute top-28 -right-12 -translate-x-1/2 flex flex-col justify-between items-center w-36 h-auto border bg-blue-gray-10 shadow-md z-10'>
+                    <div className='absolute top-24 -right-12 -translate-x-1/2 flex flex-col justify-between items-center w-36 h-auto border bg-blue-gray-10 shadow-md z-10'>
                       <div className='w-5/6 text-heading-4 border-b py-6 text-center font-semibold'>
                         {auth.user.name} 님
                       </div>

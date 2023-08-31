@@ -138,6 +138,7 @@ const PostInput = ({ width }: PostInputProps) => {
           }`}
         />
         <textarea
+          style={{ height: '200px' }}
           className={`w-full  h-3/4 relative text-left flex items-center justify-center border border-solid border-blue-gray-200 hover:border-blue-gray-400 focus:border-blue-gray-999 pl-1 pt-1 focus:outline-none resize-none ${
             bg[state.templateType.color]
           }`}
