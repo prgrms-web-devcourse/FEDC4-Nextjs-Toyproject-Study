@@ -27,6 +27,8 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
         if (postId !== null) {
           const response = await getPostDetail({ postId: postId });
           setState({ ...state, postData: response.data });
+        } else {
+          setState({ ...state, postData: {} });
         }
       } catch (error) {
         alert(error);
@@ -34,7 +36,6 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
         setState({ ...state, isLoading: true });
       }
     };
-
     fetchData();
   }, [postId]);
 
