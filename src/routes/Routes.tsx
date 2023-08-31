@@ -4,6 +4,7 @@ import MainPage from '../pages/MainPage';
 import PostPage from '../pages/PostPage';
 import LoginPage from '../pages/LoginPage';
 import SignupPage from '../pages/SignupPage';
+import MyInfoPage from '../pages/MyInfoPage';
 import MyPostsPage from 'pages/MyPostsPage';
 
 const Routes = () => {
@@ -14,6 +15,7 @@ const Routes = () => {
         <Route path='/post' element={<PostPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
+        <Route path='/my/info' element={<MyInfoPage />} />
         <Route path='/my/posts' element={<MyPostsPage />} />
         <Route path='*' element={<Navigate replace to='/' />} />
       </Route>
