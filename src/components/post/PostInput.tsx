@@ -133,7 +133,7 @@ const PostInput = ({ width }: PostInputProps) => {
           placeHolder='제목을 입력해 주세요'
           disabled={false}
           onChange={(e) => handleTitleChange(e.target.value)}
-          styleOption={`mb-6 focus:outline-none border border-solid border-blue-gray-200 hover:border-blue-gray-400 focus:border-blue-gray-999 text-body-2 placeholder:text-blue-gray-200 px-5 py-2.5 text-left flex items-center justify-center w-full ${
+          styleOption={`mb-6 focus:outline-none border  border-solid border-blue-gray-200 hover:border-blue-gray-400 focus:border-blue-gray-999 text-body-2 placeholder:text-blue-gray-200 px-5 py-2.5 text-left flex items-center justify-center w-full ${
             bg[state.templateType.color]
           }`}
         />
