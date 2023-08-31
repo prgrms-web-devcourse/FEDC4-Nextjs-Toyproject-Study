@@ -3,6 +3,7 @@ import ImageView from './ImageView/ImageView';
 import Comment from './Comment/Comments';
 import { getPostDetail } from 'api/postApi';
 import { postModalType, PostType } from 'interface/post';
+import Loding from '../../components/common/Loding';
 
 interface ModalProps {
   modalOption: {
@@ -25,7 +26,9 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
     const fetchData = async () => {
       try {
         if (postId !== null) {
+          setState({ ...state, isLoading: true });
           const response = await getPostDetail({ postId: postId });
+          setState({ ...state, isLoading: false });
           setState({ ...state, postData: response.data });
         } else {
           setState({ ...state, postData: {} });
@@ -39,9 +42,9 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
     fetchData();
   }, [postId]);
 
-  if (state.isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (state.isLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <div
@@ -51,8 +54,11 @@ const Modal: FC<ModalProps> = ({ modalOption, closeModal }) => {
       }`}
       onClick={closeModal}
     >
+      <Loding isLoding={state.isLoading} />
       <div
-        className={`absolute left-1/2 top-1/2 text-center z-10 translate-y-[-50%] translate-x-[-50%]`}
+        className={`absolute left-1/2 top-1/2 text-center z-10 translate-y-[-50%] translate-x-[-50%] ${
+          showModal ? 'hidden' : ''
+        }`}
       >
         <div
           className={`bg-blue-gray-10 w-[1080px] shadow-card-1 h-[720px] flex flex-row border border-solid border-blue-gray-800 justify-center items-center`}
