@@ -17,7 +17,7 @@ const MainPage: React.FC = () => {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
-        setState({ ...state, showModal: true });
+        setState({ postId: null, showModal: true });
         document.body.style.overflow = 'unset';
       }
     };
@@ -37,7 +37,7 @@ const MainPage: React.FC = () => {
           modalOption={state}
           closeModal={(event) => {
             if (event.target.id === 'background') {
-              setState({ ...state, showModal: true });
+              setState({ postId: null, showModal: true });
               document.body.style.overflow = 'unset';
             }
           }}
