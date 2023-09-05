@@ -28,7 +28,7 @@ const Header = () => {
     navigate('/login');
   };
   const handleMyPost = () => {
-    navigate('/my/posts정');
+    navigate('/my/posts');
   };
   const handleMyInfo = () => {
     navigate('/my/info');
