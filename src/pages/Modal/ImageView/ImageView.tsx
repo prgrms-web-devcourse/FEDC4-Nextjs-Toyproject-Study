@@ -7,7 +7,7 @@ const ImageView = ({ postData }) => {
 
   return (
     <div
-      className='relative flex-col justify-center items-center w-1/2 h-[688px] mx-3 border border-solid border-blue-gray-800'
+      className='relative flex-col justify-center items-center w-full h-[688px] mx-3 border border-solid border-blue-gray-800'
       style={{ backgroundColor: template?.color }}
     >
       <h2 className='pt-[56px] text-heading-2 text-center'>{title}</h2>

@@ -7,6 +7,7 @@ import { AppDispatch } from '../../store';
 import { login } from '../../store/auth';
 import AuthInput from './AuthInput';
 import { LargeButton, SmallButton } from '../common/Button';
+import { useMediaQuery } from 'react-responsive';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -61,37 +62,81 @@ const LoginForm = () => {
     }
   };
 
+  const isPcOrTablet = useMediaQuery({
+    query: '(min-width:516px)',
+  });
+  const isMobile = useMediaQuery({
+    query: '(max-width:515px)',
+  });
+
   return (
     <>
-      <form className='max-w-md mx-auto' onSubmit={handleSubmit}>
-        <div className='px-5 py-6 border border-blue-gray-880 bg-white shadow-card-1'>
-          <AuthInput
-            label='아이디'
-            id='id'
-            value={id}
-            placeholder='아이디'
-            onChange={(e) => handleIdChange(e.target.value)}
-            isError={isIdError}
-            errorText='아이디를 입력해주세요.'
-          />
-          <AuthInput
-            label='비밀번호'
-            id='password'
-            type='password'
-            value={password}
-            placeholder='비밀번호'
-            onChange={(e) => handlePasswordChange(e.target.value)}
-            isError={isPasswordError}
-            errorText='비밀번호를 입력해주세요.'
-          />
+      {isPcOrTablet && (
+        <div>
+          <form className='max-w-md mx-auto' onSubmit={handleSubmit}>
+            <div className='px-5 py-6 border border-blue-gray-880 bg-white shadow-card-1'>
+              <AuthInput
+                label='아이디'
+                id='id'
+                value={id}
+                placeholder='아이디'
+                onChange={(e) => handleIdChange(e.target.value)}
+                isError={isIdError}
+                errorText='아이디를 입력해주세요.'
+              />
+              <AuthInput
+                label='비밀번호'
+                id='password'
+                type='password'
+                value={password}
+                placeholder='비밀번호'
+                onChange={(e) => handlePasswordChange(e.target.value)}
+                isError={isPasswordError}
+                errorText='비밀번호를 입력해주세요.'
+              />
+            </div>
+            <div className='mt-14 text-center'>
+              <LargeButton text='로그인' />
+            </div>
+          </form>
+          <div className='mt-8 text-center'>
+            <SmallButton text='회원가입' onClick={() => navigate('/signup')} />
+          </div>
         </div>
-        <div className='mt-14 text-center'>
-          <LargeButton text='로그인' />
+      )}
+      {isMobile && (
+        <div>
+          <form className='max-w-md mx-auto' onSubmit={handleSubmit}>
+            <div className='m-5 px-5 py-6 border border-blue-gray-880 bg-white shadow-card-1'>
+              <AuthInput
+                label='아이디'
+                id='id'
+                value={id}
+                placeholder='아이디'
+                onChange={(e) => handleIdChange(e.target.value)}
+                isError={isIdError}
+                errorText='아이디를 입력해주세요.'
+              />
+              <AuthInput
+                label='비밀번호'
+                id='password'
+                type='password'
+                value={password}
+                placeholder='비밀번호'
+                onChange={(e) => handlePasswordChange(e.target.value)}
+                isError={isPasswordError}
+                errorText='비밀번호를 입력해주세요.'
+              />
+            </div>
+            <div className='mt-14 text-center'>
+              <LargeButton text='로그인' />
+            </div>
+          </form>
+          <div className='mt-8 text-center'>
+            <SmallButton text='회원가입' onClick={() => navigate('/signup')} />
+          </div>
         </div>
-      </form>
-      <div className='mt-8 text-center'>
-        <SmallButton text='회원가입' onClick={() => navigate('/signup')} />
-      </div>
+      )}
     </>
   );
 };

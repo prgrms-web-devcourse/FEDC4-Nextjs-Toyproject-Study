@@ -4,7 +4,7 @@ const ColorPicker = ({ id, color, onColorSelect, isSelected }) => {
   return (
     <div
       id={id}
-      className={`h-10 w-11 mr-3 border border-solid border-[#2D4053] cursor-pointer hover:shadow-button-1 ${shadowClass}`}
+      className={`h-10 pb-8 w-10 mx-3 my-4 border border-solid border-[#2D4053] cursor-pointer hover:shadow-button-1 ${shadowClass}`}
       style={{ backgroundColor: color }}
       onClick={() => onColorSelect(color, id)}
     ></div>

@@ -41,6 +41,12 @@ const MainPage: React.FC = () => {
               document.body.style.overflow = 'unset';
             }
           }}
+          closeBtnClick={(event) => {
+            if (event.target.id === 'closeButton') {
+              setState({ ...state, showModal: true });
+              document.body.style.overflow = 'unset';
+            }
+          }}
         />
       }
     </div>
