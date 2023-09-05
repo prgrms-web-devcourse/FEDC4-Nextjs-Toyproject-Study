@@ -25,23 +25,24 @@ const Modal: FC<ModalProps> = ({ closeBtnClick, modalOption, closeModal }) => {
   };
   const [state, setState] = useState<postModalType>(initialState);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (postId !== null) {
-          setState({ ...state, isLoading: true });
-          const response = await getPostDetail({ postId: postId });
-          setState({ ...state, isLoading: false });
-          setState({ ...state, postData: response.data });
-        } else {
-          setState({ ...state, postData: {} });
-        }
-      } catch (error) {
-        alert(error);
-        setState({ ...state, errorMessage: 'Error fetching data:' });
+  const fetchData = async () => {
+    try {
+      if (postId !== null) {
         setState({ ...state, isLoading: true });
+        const response = await getPostDetail({ postId: postId });
+        setState({ ...state, isLoading: false });
+        setState({ ...state, postData: response.data });
+      } else {
+        setState({ ...state, postData: {} });
       }
-    };
+    } catch (error) {
+      alert(error);
+      setState({ ...state, errorMessage: 'Error fetching data:' });
+      setState({ ...state, isLoading: true });
+    }
+  };
+
+  useEffect(() => {
     fetchData();
   }, [postId]);
 
@@ -88,6 +89,9 @@ const Modal: FC<ModalProps> = ({ closeBtnClick, modalOption, closeModal }) => {
                     isForgive={state.postData.isForgive}
                     forgiveCount={state.postData.forgiveCount}
                     comment={state.postData.comment}
+                    updateComment={() => {
+                      fetchData();
+                    }}
                     addComment={(newComment) => {
                       const updatedState = { ...state };
                       if (updatedState.postData.comment) {
@@ -152,6 +156,9 @@ const Modal: FC<ModalProps> = ({ closeBtnClick, modalOption, closeModal }) => {
                     postId={state.postData.postId}
                     isLike={state.postData.isLike}
                     comment={state.postData.comment}
+                    updateComment={() => {
+                      fetchData();
+                    }}
                     addComment={(newComment) => {
                       const updatedState = { ...state };
                       if (updatedState.postData.comment) {
@@ -224,6 +231,9 @@ const Modal: FC<ModalProps> = ({ closeBtnClick, modalOption, closeModal }) => {
                     postId={state.postData.postId}
                     isLike={state.postData.isLike}
                     comment={state.postData.comment}
+                    updateComment={() => {
+                      fetchData();
+                    }}
                     addComment={(newComment) => {
                       const updatedState = { ...state };
                       if (updatedState.postData.comment) {
