@@ -82,7 +82,7 @@ const Comment = ({
 
   return (
     <div
-      className={`flex flex-col w-1/2 h-[720px] items-start justify-between border-l border-solid border-blue-gray-800 rounded-t`}
+      className={`flex flex-col w-full items-start justify-between border-l border-solid border-blue-gray-800 rounded-t`}
     >
       <div
         className={`h-[56px] w-full flex flex-row justify-between items-center px-3 py-1.5 border-b border-solid border-blue-gray-800`}
@@ -139,7 +139,7 @@ const Comment = ({
           </div>
         ))}
       </div>
-      <div className={`w-[530px] pb-5 px-5 flex flex-row mb-2`}>
+      <div className={`w-full pb-5 px-5 flex flex-row mb-2`}>
         <Input
           id={'commentInput'}
           placeHolder={'댓글을 입력해주세요.'}

@@ -16,7 +16,11 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 
-const PostInput = () => {
+type PostInputProps = {
+  width?: string;
+};
+
+const PostInput = ({ width }: PostInputProps) => {
   const navigate = useNavigate();
   const auth = useSelector((state: RootState) => state.auth);
   const IMG_ARR = [
@@ -117,10 +121,10 @@ const PostInput = () => {
 
   return (
     <div
-      className={`flex flex-col justify-center pb-12 px-20 items-center w-screen`}
+      className={`flex flex-col justify-center self-center pb-12 ${width} justify-center items-center `}
     >
       <div
-        className='flex flex-col justify-start items-center w-1/2 h-[688px] py-10 px-10 border border-solid border-blue-gray-880 shadow-card-1'
+        className='flex flex-col justify-start items-center w-full py-10 px-10 border border-solid border-blue-gray-880 shadow-card-1'
         style={{ backgroundColor: state.templateType.color }}
       >
         <Input
@@ -129,26 +133,27 @@ const PostInput = () => {
           placeHolder='제목을 입력해 주세요'
           disabled={false}
           onChange={(e) => handleTitleChange(e.target.value)}
-          styleOption={`mb-6 focus:outline-none border border-solid border-blue-gray-200 hover:border-blue-gray-400 focus:border-blue-gray-999 text-body-2 placeholder:text-blue-gray-200 px-5 py-2.5 text-left flex items-center justify-center w-11/12 ${
+          styleOption={`mb-6 focus:outline-none border  border-solid border-blue-gray-200 hover:border-blue-gray-400 focus:border-blue-gray-999 text-body-2 placeholder:text-blue-gray-200 px-5 py-2.5 text-left flex items-center justify-center w-full ${
             bg[state.templateType.color]
           }`}
         />
         <textarea
-          className={`w-11/12 h-3/4 relative text-left flex items-center justify-center border border-solid border-blue-gray-200 hover:border-blue-gray-400 focus:border-blue-gray-999 pl-1 pt-1 focus:outline-none resize-none ${
+          style={{ height: '200px' }}
+          className={`w-full  h-3/4 relative text-left flex items-center justify-center border border-solid border-blue-gray-200 hover:border-blue-gray-400 focus:border-blue-gray-999 pl-1 pt-1 focus:outline-none resize-none ${
             bg[state.templateType.color]
           }`}
           placeholder='반성문 내용을 입력해주세요.'
           value={state.content}
           onChange={(e) => handleContentChange(e.target.value)}
         />
-        <div className={`w-11/12 flex flex-row justify-start gap-80 pt-5`}>
+        <div className={`w-full flex flex-row justify-start pt-5`}>
           {state.templateType.icon ? (
             <img
               src={state.templateType.icon}
-              className={`w-[120px] h-[120px]`}
+              className={`w-[80px] h-[80px]`}
             />
           ) : (
-            <div className={`w-[120px] h-[120px]`} />
+            <div className={`w-[80px] h-[80px]`} />
           )}
           <div className={`flex flex-col items-end justify-end w-full`}>
             <span className={`text-right font-dgm`}>{formattedDate}</span>
@@ -157,12 +162,17 @@ const PostInput = () => {
             </span>
           </div>
         </div>
-      </div>
-
-      <div className={`flex flex-col w-1/2`}>
-        <div className={`w-11/12 pt-5 justify-start items-center`}>
-          <span className={`font-dgm whitespace-nowrap mr-3`}>배경색</span>
-          <div className={`flex flex-row pt-3`}>
+        <div
+          className={`flex flex-wrap w-full py-5 justify-start items-center`}
+        >
+          <div className={`flex flex-wrap items-center`}>
+            <div>
+              <span
+                className={`w-10 h10 mr-2 font-dgm whitespace-nowrap self-center`}
+              >
+                배경색
+              </span>
+            </div>
             {COLOR_ARR.map((color, index) => {
               const id = color;
               const selected = state.templateType.color;
@@ -186,10 +196,15 @@ const PostInput = () => {
               );
             })}
           </div>
-        </div>
-        <div className={`w-11/12 py-5 justify-start items-center`}>
-          <span className={`font-dgm whitespace-nowrap mr-3`}>아이콘</span>
-          <div className={`flex flex-row pt-3`}>
+          <div
+            className={`flex flex-wrap w-11/12 py-5 justify-start items-center`}
+          >
+            <div>
+              <span className={`mr-5 w-10 h10 mr-2 font-dgm whitespace-nowrap`}>
+                아이콘
+              </span>
+            </div>
+
             {IMG_ARR.map((src, index) => {
               const selected = state.templateType.icon;
               return (

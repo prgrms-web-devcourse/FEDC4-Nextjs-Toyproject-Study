@@ -1,7 +1,12 @@
 import arrowDown from 'assets/img/arrow-down.svg';
 import arrowUp from 'assets/img/arrow-up.svg';
 import { useState } from 'react';
-const PostGuidButton = () => {
+
+type PostGuidButtonProps = {
+  width?: string;
+};
+
+const PostGuidButton = ({ width }: PostGuidButtonProps) => {
   const [imgPath, setImgPath] = useState(arrowDown);
   const [guidFlag, setGuidFlag] = useState(false);
   const guidButtonClick = () => {
@@ -16,11 +21,11 @@ const PostGuidButton = () => {
   return (
     <div
       id='postContainer'
-      className={`flex flex-col justify-center align-middle py-12 px-20 justify-center items-center w-full`}
+      className={`flex flex-col justify-center ${width} align-middle py-12 justify-center items-center w-full`}
     >
       <button
         id={`postGuidButton`}
-        className={`flex flex-row justify-between items-center border border-solid border-[#2D4053] bg-[#E9ECF3] w-1/2 h-12 cursor-pointer px-2`}
+        className={`flex flex-row justify-between items-center border border-solid border-[#2D4053] bg-[#E9ECF3] ${width} h-12 cursor-pointer px-2`}
         onClick={guidButtonClick}
       >
         <h2 className={`font-dgm text-base`}>반성문 가이드</h2>
@@ -28,7 +33,7 @@ const PostGuidButton = () => {
       </button>
       <div
         id='postGuidText'
-        className={`flex flex-col justify-center w-1/2 pl-2 border-x border-b border-solid border-[#2D4053] bg-white pb-2 ${
+        className={`flex flex-col justify-center ${width} pl-2 border-x border-b border-solid border-[#2D4053] bg-white pb-2 ${
           guidFlag ? '' : 'hidden'
         }`}
       >
