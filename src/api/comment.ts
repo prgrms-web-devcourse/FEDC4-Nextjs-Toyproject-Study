@@ -8,13 +8,15 @@ export const createComment = async ({ postId, comment }) => {
 };
 
 export const editComment = async ({ postId, commentId, comment }) => {
-  const response = await request.put(`/${postId}/comments/${commentId}`, {
+  const response = await request.put(`/posts/${postId}/comments/${commentId}`, {
     comment: comment,
   });
   return response.data;
 };
 
 export const deleteComment = async ({ postId, commentId }) => {
-  const response = await request.post(`/${postId}/comments/${commentId}`);
+  const response = await request.delete(
+    `/posts/${postId}/comments/${commentId}`,
+  );
   return response.data;
 };
