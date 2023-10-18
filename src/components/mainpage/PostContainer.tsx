@@ -2,21 +2,33 @@ import Post from './Post';
 import { useEffect, useRef, useState } from 'react';
 import { getPost } from 'api/postApi';
 import { PostType } from 'interface/index';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from 'store';
+import { getPosts, initPosts } from 'store/posts';
 interface PostContainerProps {
   handleModalClick: (postId) => void;
+  isCloseModal: boolean;
+  setIsCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const PostContainer: React.FC<PostContainerProps> = ({ handleModalClick }) => {
+const PostContainer: React.FC<PostContainerProps> = ({
+  handleModalClick,
+  isCloseModal,
+  setIsCloseModal,
+}) => {
   const limit = 12;
   const endRef = useRef<HTMLDivElement>(null);
   const [start, setStart] = useState<number>(1);
-  const [datas, setDatas] = useState<PostType[]>([]);
+  // const [datas, setDatas] = useState<PostType[]>([]);
+  const dispatch = useDispatch();
+  const datas: PostType[] = useSelector((state: RootState) => state.posts);
 
   const fetchData = async () => {
     try {
       const response = await getPost({ pageId: start, limitNumber: limit });
-      setDatas([...datas, ...response.data]);
+      // setDatas([...datas, ...response.data]);
       setStart(start + 1);
+      dispatch(getPosts(response.data));
     } catch (error) {
       alert(error);
       console.error('Error fetching data.');
@@ -37,8 +49,13 @@ const PostContainer: React.FC<PostContainerProps> = ({ handleModalClick }) => {
   };
 
   useEffect(() => {
+    dispatch(initPosts());
+    if (!isCloseModal) {
+      setStart((prev) => prev - 1);
+      setIsCloseModal(true);
+    }
     fetchData();
-  }, []);
+  }, [!isCloseModal]);
 
   useEffect(() => {
     if (!endRef.current) return;

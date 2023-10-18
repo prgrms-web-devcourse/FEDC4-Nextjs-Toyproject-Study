@@ -8,6 +8,7 @@ const MainPage: React.FC = () => {
     showModal: true,
   };
   const [state, setState] = useState(initialState);
+  const [isCloseModal, setIsCloseModal] = useState(true);
 
   const clickModal = ({ postId }) => {
     setState({ postId: postId, showModal: !state.showModal });
@@ -19,9 +20,9 @@ const MainPage: React.FC = () => {
       if (e.key === 'Escape') {
         setState({ postId: null, showModal: true });
         document.body.style.overflow = 'unset';
+        setIsCloseModal(false);
       }
     };
-
     document.addEventListener('keydown', handleEscape);
 
     return () => {
@@ -31,7 +32,11 @@ const MainPage: React.FC = () => {
 
   return (
     <div>
-      <PostContainer handleModalClick={clickModal} />
+      <PostContainer
+        handleModalClick={clickModal}
+        isCloseModal={isCloseModal}
+        setIsCloseModal={setIsCloseModal}
+      />
       {
         <Modal
           modalOption={state}
@@ -39,6 +44,7 @@ const MainPage: React.FC = () => {
             if (event.target.id === 'background') {
               setState({ postId: null, showModal: true });
               document.body.style.overflow = 'unset';
+              setIsCloseModal(false);
             }
           }}
           closeBtnClick={(event) => {

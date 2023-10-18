@@ -1,18 +1,20 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from '@reduxjs/toolkit';
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './auth';
+import postsReducer from './posts';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
+
+const rootReducer = combineReducers({
+  auth: authReducer,
+  posts: postsReducer,
+});
 
 const persistConfig = {
   key: 'CURRENT_USER',
   storage,
   whitelist: ['auth'],
 };
-
-const rootReducer = combineReducers({
-  auth: authReducer,
-});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

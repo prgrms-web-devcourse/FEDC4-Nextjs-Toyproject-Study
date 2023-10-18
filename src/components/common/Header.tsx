@@ -15,7 +15,6 @@ const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
   const auth = useSelector((state: RootState) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
