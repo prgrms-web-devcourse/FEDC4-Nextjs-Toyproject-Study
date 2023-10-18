@@ -2,6 +2,8 @@ import Post from './Post';
 import { useEffect, useRef, useState } from 'react';
 import { getPost } from 'api/postApi';
 import { PostType } from 'interface/index';
+import { useSelector } from 'react-redux';
+import { RootState } from 'store';
 interface PostContainerProps {
   handleModalClick: (postId) => void;
 }
@@ -12,11 +14,15 @@ const PostContainer: React.FC<PostContainerProps> = ({ handleModalClick }) => {
   const [start, setStart] = useState<number>(1);
   const [datas, setDatas] = useState<PostType[]>([]);
 
+  const posts = useSelector((state: RootState) => state.posts);
+  console.log(posts);
+
   const fetchData = async () => {
     try {
       const response = await getPost({ pageId: start, limitNumber: limit });
       setDatas([...datas, ...response.data]);
       setStart(start + 1);
+      console.log(response.data);
     } catch (error) {
       alert(error);
       console.error('Error fetching data.');

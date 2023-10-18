@@ -1,7 +1,14 @@
+import { combineReducers } from '@reduxjs/toolkit';
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './auth';
+import postsReducer from './posts';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
+
+const rootReducer = combineReducers({
+  auth: authReducer,
+  posts: postsReducer,
+});
 
 const persistConfig = {
   key: 'CURRENT_USER',
@@ -9,10 +16,10 @@ const persistConfig = {
   whitelist: ['auth'],
 };
 
-const persistedReducer = persistReducer(persistConfig, authReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: { auth: persistedReducer },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),
   devTools: process.env.NODE_ENV !== 'production',
