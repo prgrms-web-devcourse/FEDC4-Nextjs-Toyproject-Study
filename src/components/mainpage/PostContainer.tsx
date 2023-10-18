@@ -14,7 +14,6 @@ const PostContainer: React.FC<PostContainerProps> = ({ handleModalClick }) => {
   const endRef = useRef<HTMLDivElement>(null);
   const [start, setStart] = useState<number>(1);
   // const [datas, setDatas] = useState<PostType[]>([]);
-
   const dispatch = useDispatch();
   const datas: PostType[] = useSelector((state: RootState) => state.posts);
 

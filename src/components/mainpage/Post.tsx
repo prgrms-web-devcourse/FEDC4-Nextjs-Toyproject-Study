@@ -5,17 +5,6 @@ interface PostProps {
   post: PostType;
 }
 
-const template = {
-  red: '#FFCAC8',
-  pink: '#FBD0F5',
-  purple: '#B8B5FF',
-  blue: '#94DAFF',
-  sky: '#C7F5FE',
-  green: '#A3F7BF',
-  lime: '#DEFF8B',
-  yellow: '#F3F798',
-};
-
 const Post: React.FC<PostProps> = ({ post }) => {
   const template = post.templateType
     ? JSON.parse(post.templateType.replace(/'/g, '"'))
@@ -28,7 +17,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
   return (
     <div
       className={`relative m-auto w-[268px] h-[386px] p-5 hover:shadow-[4px_4px_0px_0px_rgba(20,32,41,1)] hover:scale-105 `}
-      style={{ backgroundColor: template?.color }}
+      style={postStyle}
     >
       <div className='group/item absolute top-0 left-0 h-full w-full cursor-pointer flex justify-center items-center hover:bg-[#000000]/[.3] '>
         <div className='invisible absolute flex flex-row gap-4 group-hover/item:visible'>
