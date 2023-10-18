@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import ImageView from './ImageView/ImageView';
 import Comment from './Comment/Comments';
 import { getPostDetail } from 'api/postApi';
@@ -45,10 +45,6 @@ const Modal: FC<ModalProps> = ({ closeBtnClick, modalOption, closeModal }) => {
   useEffect(() => {
     fetchData();
   }, [postId]);
-
-  // if (state.isLoading) {
-  //   return <div>Loading...</div>;
-  // }
 
   const isPc = useMediaQuery({
     query: '(min-width:1115px)',

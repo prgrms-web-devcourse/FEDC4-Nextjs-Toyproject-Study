@@ -7,9 +7,15 @@ import { RootState } from 'store';
 import { getPosts, initPosts } from 'store/posts';
 interface PostContainerProps {
   handleModalClick: (postId) => void;
+  isCloseModal: boolean;
+  setIsCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const PostContainer: React.FC<PostContainerProps> = ({ handleModalClick }) => {
+const PostContainer: React.FC<PostContainerProps> = ({
+  handleModalClick,
+  isCloseModal,
+  setIsCloseModal,
+}) => {
   const limit = 12;
   const endRef = useRef<HTMLDivElement>(null);
   const [start, setStart] = useState<number>(1);
@@ -44,8 +50,12 @@ const PostContainer: React.FC<PostContainerProps> = ({ handleModalClick }) => {
 
   useEffect(() => {
     dispatch(initPosts());
+    if (!isCloseModal) {
+      setStart((prev) => prev - 1);
+      setIsCloseModal(true);
+    }
     fetchData();
-  }, []);
+  }, [!isCloseModal]);
 
   useEffect(() => {
     if (!endRef.current) return;
