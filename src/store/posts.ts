@@ -1,28 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PostType } from '../interface/index';
 
-const initialState: Array<PostType> = [
-  {
-    postId: 123,
-    title: 'imsy',
-    content: 'zzz',
-    user: { name: 'haya', nickName: 'haya2' },
-    commentCount: 1,
-    likeCount: 0,
-    forgiveCount: 0,
-  },
-];
+const initialState: PostType[] = [];
 
 export const posts = createSlice({
   name: 'posts',
   initialState,
   reducers: {
     getPosts(state, action) {
-      const { postsData } = action.payload;
-      state = [...state, postsData];
+      const postsData = action.payload;
+      return [...state, ...postsData];
+    },
+    initPosts() {
+      return initialState;
     },
   },
 });
 
-export const { getPosts } = posts.actions;
+export const { getPosts, initPosts } = posts.actions;
 export default posts.reducer;
